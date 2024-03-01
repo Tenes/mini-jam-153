@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3y1fcp46ao6c"]
+
+[ext_resource type="Texture2D" uid="uid://cvwjtuuxfejff" path="res://Assets/Building_01.png" id="1_617hb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_po1im"]
+size = Vector2(46, 127)
+
+[node name="Building" type="Node2D"]
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="Shape" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_po1im")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_617hb")
