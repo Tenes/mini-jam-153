@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://baqpapnittkdk"]
+[gd_scene load_steps=3 format=3 uid="uid://baqpapnittkdk"]
 
 [ext_resource type="Script" path="res://Scripts/city_scene.gd" id="1_mbhew"]
+[ext_resource type="PackedScene" uid="uid://chammg8r5idns" path="res://Models/Harpoon/harpoon.tscn" id="2_skcxh"]
 
 [node name="CityScene" type="Node2D"]
 script = ExtResource("1_mbhew")
+
+[node name="Harpoon" parent="." instance=ExtResource("2_skcxh")]
+position = Vector2(236, 137)
+
+[node name="Rope" type="Line2D" parent="."]
+width = 3.0
+default_color = Color(0.6, 0.901961, 0.372549, 1)

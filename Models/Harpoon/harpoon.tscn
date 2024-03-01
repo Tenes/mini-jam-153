@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://chammg8r5idns"]
+
+[ext_resource type="Texture2D" uid="uid://bsjdhrdybaj7l" path="res://Assets/Harpon_01_MIDDLE.png" id="1_el1rv"]
+[ext_resource type="Script" path="res://Models/Harpoon/harpoon.gd" id="1_gudjn"]
+[ext_resource type="Texture2D" uid="uid://b6xiccyc22dn8" path="res://Assets/Harpon_01_FRONT.png" id="2_nvnpr"]
+[ext_resource type="Texture2D" uid="uid://b1d6jt3bqc6t3" path="res://Assets/Harpon_01_BACK.png" id="3_mora5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6y04s"]
+size = Vector2(59, 63)
+
+[node name="Harpoon" type="Node2D"]
+script = ExtResource("1_gudjn")
+
+[node name="SpriteMiddle" type="Sprite2D" parent="."]
+z_index = 1
+z_as_relative = false
+position = Vector2(21, 18)
+rotation = -0.00163283
+texture = ExtResource("1_el1rv")
+offset = Vector2(-21, -18)
+
+[node name="RopeHole" type="Marker2D" parent="SpriteMiddle"]
+position = Vector2(-41.8768, -31.1662)
+rotation = 0.00396234
+scale = Vector2(1, 1)
+
+[node name="SpriteFront" type="Sprite2D" parent="."]
+z_index = 2
+texture = ExtResource("2_nvnpr")
+
+[node name="SpriteBack" type="Sprite2D" parent="SpriteFront"]
+z_as_relative = false
+texture = ExtResource("3_mora5")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="Shape" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(1.5, -0.5)
+shape = SubResource("RectangleShape2D_6y04s")
