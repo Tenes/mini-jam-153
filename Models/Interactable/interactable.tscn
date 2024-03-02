@@ -1,16 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dw75lst4ci8fh"]
+[gd_scene load_steps=4 format=3 uid="uid://dw75lst4ci8fh"]
 
 [ext_resource type="Script" path="res://Models/Interactable/interactable.gd" id="1_ju4d7"]
-[ext_resource type="PackedScene" uid="uid://bsxu8ugs0g6ob" path="res://Models/Particles/capture_particles.tscn" id="2_2hl68"]
 [ext_resource type="AudioStream" uid="uid://dkvnlxcbpwtxm" path="res://Assets/Sounds/human_death.mp3" id="2_okfs3"]
-[ext_resource type="PackedScene" uid="uid://bga0jmmjnm1f3" path="res://Models/Particles/capture_particles_explosion01.tscn" id="3_ulmhm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_spf4m"]
 size = Vector2(8, 13.5)
 
 [node name="Interactable2" type="Node2D"]
 script = ExtResource("1_ju4d7")
-capture_particle = Array[PackedScene]([ExtResource("2_2hl68"), ExtResource("3_ulmhm")])
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(0, -6)

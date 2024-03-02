@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://d334mdfiimijb"]
+
+[ext_resource type="PackedScene" uid="uid://cf6iwnp41gx5k" path="res://Models/Particles/blood_particle_2d.tscn" id="1_btbk2"]
+
+[sub_resource type="Gradient" id="Gradient_1jtrt"]
+colors = PackedColorArray(0.481941, 0.465874, 0.466404, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uw406"]
+gradient = SubResource("Gradient_1jtrt")
+
+[sub_resource type="Curve" id="Curve_otmne"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.579268, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_t6uae"]
+curve = SubResource("Curve_otmne")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_44rm8"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(40, 1, 1)
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 70.0
+initial_velocity_max = 80.0
+gravity = Vector3(0, 150, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_t6uae")
+color = Color(0.717647, 0.717647, 0.717647, 1)
+color_initial_ramp = SubResource("GradientTexture1D_uw406")
+
+[node name="BetonParticle2D" instance=ExtResource("1_btbk2")]
+amount = 22
+process_material = SubResource("ParticleProcessMaterial_44rm8")

@@ -1,14 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3y1fcp46ao6c"]
+[gd_scene load_steps=8 format=3 uid="uid://d3y1fcp46ao6c"]
 
 [ext_resource type="Texture2D" uid="uid://cvwjtuuxfejff" path="res://Assets/Building_01.png" id="1_617hb"]
 [ext_resource type="PackedScene" uid="uid://dw75lst4ci8fh" path="res://Models/Interactable/interactable.tscn" id="1_r7swu"]
 [ext_resource type="Script" path="res://Models/Building/building.gd" id="2_sftir"]
+[ext_resource type="PackedScene" uid="uid://bsxu8ugs0g6ob" path="res://Models/Particles/capture_particles.tscn" id="3_avylh"]
+[ext_resource type="PackedScene" uid="uid://bga0jmmjnm1f3" path="res://Models/Particles/capture_particles_explosion01.tscn" id="4_30b0v"]
+[ext_resource type="PackedScene" uid="uid://d334mdfiimijb" path="res://Models/Particles/brutal_particle_2d.tscn" id="5_gynqc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_46yyn"]
 size = Vector2(47, 127)
 
 [node name="Interactable" instance=ExtResource("1_r7swu")]
 script = ExtResource("2_sftir")
+capture_particles = Array[PackedScene]([ExtResource("3_avylh"), ExtResource("4_30b0v")])
+destruction_particles = Array[PackedScene]([ExtResource("5_gynqc")])
 
 [node name="Hitbox" parent="." index="0"]
 position = Vector2(0, -64)

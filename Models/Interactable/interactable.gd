@@ -6,7 +6,8 @@ class_name Interactable
 @export var lengthSuccess: int = 10;
 @onready var sprite: Sprite2D = $Sprite
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
-@export var capture_particle : Array[PackedScene]
+@export var capture_particles : Array[PackedScene]
+@export var destruction_particles : Array[PackedScene]
 
 const direction : Array[int] = [-1, 1];
 const scales : Array[float] = [0.25, 0.5, 2, 3];
@@ -27,7 +28,6 @@ func spawnFrom(from: Node2D) -> void:
 func bindTo(from: Node2D) -> void:
 	moovement = 0;
 	deactivateAllAreas();
-	instantiate_capture_particle();
 	if parent != null:
 		self.reparent(from);
 	parent = from;
@@ -46,6 +46,7 @@ func deactivateAllAreas() -> void:
 	hitbox.free();
 	
 func failedCaptureAnimation() -> void:
+	instantiate_particles(destruction_particles,Vector2.UP * 10,get_tree().root)
 	var failedDuration = Global.RNG.randf_range(0.1, 1);
 	var scaleValue = scales.pick_random();
 	tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR);
@@ -73,17 +74,19 @@ func playCaptSound() -> void:
 		audio_stream_player_2d.pitch_scale = Global.RNG.randf_range(0.8, 1.3);
 	audio_stream_player_2d.play();
 
-func instantiate_capture_particle() -> void:
-	if capture_particle == null:
+func instantiate_particles(particle_list,offset = Vector2.ZERO, parent = self) -> void:
+	if particle_list == null:
 		return
-	for particle in capture_particle:
+	for particle in particle_list:
 		var instance = particle.instantiate() as GPUParticles2D
 		instance.emitting = true
 		instance.finished.connect(func():instance.queue_free())
-		add_child(instance)
+		
+		parent.add_child(instance)
+		instance.global_position = global_position + offset
 	
 func is_captured(success_state : Global.BarStatus) -> void:
 	if success_state == Global.BarStatus.SUCCESS or success_state == Global.BarStatus.GREAT_SUCCESS:
-		instantiate_capture_particle()
+		instantiate_particles(capture_particles)
 	if Events.bar_clicked.is_connected(self.is_captured):
 		Events.bar_clicked.disconnect(self.is_captured)
