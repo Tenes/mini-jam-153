@@ -1,8 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://de4oqte1nvre1"]
+[gd_scene load_steps=8 format=3 uid="uid://de4oqte1nvre1"]
 
 [ext_resource type="Script" path="res://Models/Decor/parallax_container_node_2d.gd" id="1_c7ftj"]
 [ext_resource type="Script" path="res://Models/Decor/ParallaxNode2D.gd" id="2_viebs"]
 [ext_resource type="Texture2D" uid="uid://cwayb2pr4n7vf" path="res://Assets/Terrain_01.png" id="3_rjq0u"]
+[ext_resource type="Texture2D" uid="uid://l5ppy8xun0yt" path="res://Assets/BackgroundCloud_02.png" id="4_e6oyt"]
+[ext_resource type="Texture2D" uid="uid://c44p5qb02fqiv" path="res://Assets/BackgroundCloud_01.png" id="5_hbygc"]
+
+[sub_resource type="Gradient" id="Gradient_ypxv4"]
+colors = PackedColorArray(0, 0.596078, 0.862745, 1, 0, 0.596078, 0.862745, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wwn8x"]
+gradient = SubResource("Gradient_ypxv4")
+width = 44
+height = 34
+fill = 1
+fill_from = Vector2(0, 1)
 
 [node name="ParallaxContainerNode2D" type="Node2D"]
 script = ExtResource("1_c7ftj")
@@ -15,3 +27,32 @@ repeat = Vector2i(640, 0)
 [node name="Terrain01" type="Sprite2D" parent="ParallaxNode2D"]
 position = Vector2(320, 383)
 texture = ExtResource("3_rjq0u")
+
+[node name="ParallaxNode2D2" type="Node2D" parent="."]
+script = ExtResource("2_viebs")
+offset_scale = Vector2(0.2, 0)
+repeat = Vector2i(640, 0)
+
+[node name="Cloud01" type="Sprite2D" parent="ParallaxNode2D2"]
+z_index = -500
+position = Vector2(320, 234)
+texture = ExtResource("4_e6oyt")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1000
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_wwn8x")
+
+[node name="BackgroundCloud01" type="Sprite2D" parent="."]
+z_index = -510
+texture = ExtResource("5_hbygc")
+centered = false
