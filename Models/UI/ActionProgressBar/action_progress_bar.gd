@@ -1,12 +1,11 @@
 extends ProgressBar
 @export var base_speed = 200.0
-@export var current_speed = 100.0
+var current_speed = 0
 var current_start_pourcentage = -1
 var current_pourcentage = -1
 @onready var area_container = $AreaContainer
 
 func _ready():
-	current_speed = base_speed
 	Events.on_interactable_collided.connect(set_capture_area)
 
 func _process(delta):
@@ -16,6 +15,7 @@ func _process(delta):
 	%VSeparator.position.x = value/max_value * size.x
 
 func set_capture_area(start_pourcentage, pourcentage):
+	current_speed = base_speed
 	current_start_pourcentage = start_pourcentage
 	current_pourcentage = pourcentage
 	clear_capture_area()
@@ -30,9 +30,14 @@ func clear_capture_area():
 		child.queue_free()
 
 func _unhandled_input(event):
-	if Input.is_action_just_pressed("left_click"):
+	if Input.is_action_just_pressed("left_click") and current_pourcentage > -1:
 		if value >= current_start_pourcentage and value <= current_start_pourcentage+current_pourcentage:
 			clear_capture_area()
 			Events.bar_clicked.emit(Global.BarStatus.SUCCESS)
-			return
-		Events.bar_clicked.emit(Global.BarStatus.FAILED)
+			reset()
+		else:
+			Events.bar_clicked.emit(Global.BarStatus.FAILED)
+			reset(base_speed)
+func reset(speed = 0):
+	value = 0
+	current_speed = speed
