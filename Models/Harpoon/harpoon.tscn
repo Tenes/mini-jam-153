@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b1d6jt3bqc6t3" path="res://Assets/Harpon_01_BACK.png" id="3_mora5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6y04s"]
-size = Vector2(267, 63)
+size = Vector2(321, 63)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_imkgk"]
 size = Vector2(60, 63)
@@ -37,7 +37,7 @@ texture = ExtResource("3_mora5")
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="Shape" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-102.5, -0.5)
+position = Vector2(-129.5, -0.5)
 shape = SubResource("RectangleShape2D_6y04s")
 
 [node name="Scanbox" type="Area2D" parent="."]

@@ -11,6 +11,17 @@ extends Node
 	3: "res://Scenes/credit_scene.tscn",
 }
 
+@onready var HUMAN_SOUNDS = {
+	1: preload("res://Assets/Sounds/human_death.mp3"),
+	2: preload("res://Assets/Sounds/human_death_2.mp3"),
+	3: preload("res://Assets/Sounds/human_death_3.mp3"),
+}
+
+@onready var BUILDING_SOUNDS = {
+	1: preload("res://Assets/Sounds/building_death.mp3"),
+	2: preload("res://Assets/Sounds/building_death_2.mp3"),
+}
+
 enum BarStatus {
 	DEFAULT = 0,
 	SUCCESS = 1,

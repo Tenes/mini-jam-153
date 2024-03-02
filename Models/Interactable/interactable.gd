@@ -5,6 +5,7 @@ class_name Interactable
 @export var startSuccess: int = 0;
 @export var lengthSuccess: int = 10;
 @onready var sprite: Sprite2D = $Sprite
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 const direction : Array[int] = [-1, 1];
 
 var moovement: int = 1;
@@ -41,5 +42,11 @@ func failedCaptureAnimation() -> void:
 	tween.tween_property(self, "global_position", Vector2(Global.RNG.randi_range(-200, 600), -100), failedDuration).set_trans(Tween.TRANS_LINEAR).from_current();
 	tween.parallel().tween_property(sprite, "rotation", direction.pick_random() * 3000, failedDuration).set_trans(Tween.TRANS_LINEAR).from_current();
 	tween.parallel().tween_property(sprite, "scale", Vector2(scaleValue, scaleValue), failedDuration).set_trans(Tween.TRANS_LINEAR).from_current();
+	if self is Building:
+		audio_stream_player_2d.stream = Global.BUILDING_SOUNDS[Global.RNG.randi_range(1, 2)];
+	else:
+		audio_stream_player_2d.stream = Global.HUMAN_SOUNDS[Global.RNG.randi_range(1, 3)];
+	audio_stream_player_2d.pitch_scale = Global.RNG.randf_range(0.8, 1.3);
+	audio_stream_player_2d.play();
 	await get_tree().create_timer(1).timeout;
 	free();
