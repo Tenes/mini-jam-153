@@ -6,6 +6,8 @@ class_name Interactable
 @export var lengthSuccess: int = 10;
 @onready var sprite: Sprite2D = $Sprite
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@export var capture_particle : Array[PackedScene]
+
 const direction : Array[int] = [-1, 1];
 const scales : Array[float] = [0.25, 0.5, 2, 3];
 
@@ -25,6 +27,7 @@ func spawnFrom(from: Node2D) -> void:
 func bindTo(from: Node2D) -> void:
 	moovement = 0;
 	deactivateAllAreas();
+	instantiate_capture_particle();
 	if parent != null:
 		self.reparent(from);
 	parent = from;
@@ -69,3 +72,18 @@ func playCaptSound() -> void:
 		audio_stream_player_2d.stream = Global.HUMAN_CAPT_SOUNDS[Global.RNG.randi_range(1, 3)];
 		audio_stream_player_2d.pitch_scale = Global.RNG.randf_range(0.8, 1.3);
 	audio_stream_player_2d.play();
+
+func instantiate_capture_particle() -> void:
+	if capture_particle == null:
+		return
+	for particle in capture_particle:
+		var instance = particle.instantiate() as GPUParticles2D
+		instance.emitting = true
+		instance.finished.connect(func():instance.queue_free())
+		add_child(instance)
+	
+func is_captured(success_state : Global.BarStatus) -> void:
+	if success_state == Global.BarStatus.SUCCESS or success_state == Global.BarStatus.GREAT_SUCCESS:
+		instantiate_capture_particle()
+	if Events.bar_clicked.is_connected(self.is_captured):
+		Events.bar_clicked.disconnect(self.is_captured)

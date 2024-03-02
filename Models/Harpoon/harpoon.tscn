@@ -58,7 +58,7 @@ rotation = 0.00396234
 [node name="SpriteFront" type="AnimatedSprite2D" parent="."]
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_3brs0")
-frame_progress = 0.535768
+frame_progress = 0.825829
 speed_scale = 0.5
 
 [node name="SpriteBack" type="Sprite2D" parent="SpriteFront"]

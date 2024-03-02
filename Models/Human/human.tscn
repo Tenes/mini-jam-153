@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvm20asnfrmyn"]
+[gd_scene load_steps=6 format=3 uid="uid://dvm20asnfrmyn"]
 
 [ext_resource type="PackedScene" uid="uid://dw75lst4ci8fh" path="res://Models/Interactable/interactable.tscn" id="1_mcpo3"]
 [ext_resource type="Texture2D" uid="uid://iiwvprt2ogu" path="res://Assets/Peon_01.png" id="1_n6ap3"]
 [ext_resource type="Script" path="res://Models/Human/human.gd" id="2_fiebf"]
+[ext_resource type="PackedScene" uid="uid://bsxu8ugs0g6ob" path="res://Models/Particles/capture_particles.tscn" id="3_ek4gg"]
+[ext_resource type="PackedScene" uid="uid://bga0jmmjnm1f3" path="res://Models/Particles/capture_particles_explosion01.tscn" id="4_xy7hu"]
 
 [node name="Interactable" instance=ExtResource("1_mcpo3")]
 script = ExtResource("2_fiebf")
 startSuccess = 20
+capture_particle = Array[PackedScene]([ExtResource("3_ek4gg"), ExtResource("4_xy7hu")])
 
 [node name="Hitbox" parent="." index="0"]
 position = Vector2(0, -8)

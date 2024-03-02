@@ -40,6 +40,7 @@ func _on_hitbox_area_entered(area: Area2D):
 	parent.deactivateCaptureArea();
 	if self.interactables.size() == 1:
 		Events.on_interactable_collided.emit(parent.startSuccess, parent.lengthSuccess);
+		Events.bar_clicked.connect(parent.is_captured)
 
 func playReelingAnimation() -> void:
 	isReeling = true;
