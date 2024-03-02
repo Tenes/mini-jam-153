@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 @onready var rope : Rope = $Rope;
 @onready var harpoon : Harpoon = $Harpoon;

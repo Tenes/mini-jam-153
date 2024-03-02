@@ -18,4 +18,4 @@ shape = SubResource("RectangleShape2D_spf4m")
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -6)
 
-[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

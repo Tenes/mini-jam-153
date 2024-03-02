@@ -7,11 +7,7 @@ var parent: Node2D;
 @export var lengthSuccess: int = 10;
 
 func _process(delta: float) -> void:
-	global_position.x += (1 * delta * 200);
-
-func _on_hitbox_body_entered(body: Node2D) -> void:
-	Events.on_interactable_collided.emit(startSuccess, lengthSuccess);
-	Events.bar_clicked.connect(isSuccessfullyChallenged);
+	global_position.x += (1 * delta * 100);
 
 func spawnFrom(from: Node2D):
 	parent = from;
@@ -25,3 +21,7 @@ func isSuccessfullyChallenged(successState: Global.BarStatus):
 		print("GREAT SUCCESS");
 	else:
 		pass;
+
+func _on_hitbox_area_entered(area):
+	Events.on_interactable_collided.emit(startSuccess, lengthSuccess);
+	Events.bar_clicked.connect(isSuccessfullyChallenged);
