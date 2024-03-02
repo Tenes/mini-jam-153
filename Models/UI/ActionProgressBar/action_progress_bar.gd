@@ -7,6 +7,7 @@ var current_pourcentage = -1
 
 func _ready():
 	Events.on_interactable_collided.connect(set_capture_area)
+	Events.reset_bar.connect(reset)
 
 func _process(delta):
 	value += current_speed * delta
@@ -15,7 +16,6 @@ func _process(delta):
 	%VSeparator.position.x = value/max_value * size.x
 
 func set_capture_area(start_pourcentage, pourcentage):
-	reset()
 	current_speed = base_speed
 	current_start_pourcentage = start_pourcentage
 	current_pourcentage = pourcentage
@@ -37,7 +37,6 @@ func _unhandled_input(event):
 			reset()
 			Events.bar_clicked.emit(Global.BarStatus.SUCCESS)
 		else:
-			reset(base_speed)
 			Events.bar_clicked.emit(Global.BarStatus.FAILED)
 
 func reset(speed = 0):

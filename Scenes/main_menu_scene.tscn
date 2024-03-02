@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://brawasoc7mri6"]
+[gd_scene load_steps=3 format=3 uid="uid://brawasoc7mri6"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu_scene.gd" id="1_vtil1"]
+[ext_resource type="PackedScene" uid="uid://de4oqte1nvre1" path="res://Models/Decor/parallax_container_node_2d.tscn" id="2_fwc7t"]
 
 [node name="MainMenuScene" type="CanvasLayer"]
 script = ExtResource("1_vtil1")
+
+[node name="ParallaxContainerNode2D" parent="." instance=ExtResource("2_fwc7t")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 9

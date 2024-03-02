@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bl2lcb53r07j4"]
+[gd_scene load_steps=3 format=3 uid="uid://bl2lcb53r07j4"]
 
 [ext_resource type="Script" path="res://Scripts/credit_scene.gd" id="1_34t3g"]
+[ext_resource type="PackedScene" uid="uid://de4oqte1nvre1" path="res://Models/Decor/parallax_container_node_2d.tscn" id="2_m7ew6"]
 
 [node name="CreditScene" type="Control"]
 layout_mode = 3
@@ -11,6 +12,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_34t3g")
+
+[node name="ParallaxContainerNode2D" parent="." instance=ExtResource("2_m7ew6")]
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1

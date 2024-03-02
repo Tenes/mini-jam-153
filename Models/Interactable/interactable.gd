@@ -42,4 +42,4 @@ func failedCaptureAnimation() -> void:
 	tween.parallel().tween_property(sprite, "rotation", direction.pick_random() * 3000, failedDuration).set_trans(Tween.TRANS_LINEAR).from_current();
 	tween.parallel().tween_property(sprite, "scale", Vector2(scaleValue, scaleValue), failedDuration).set_trans(Tween.TRANS_LINEAR).from_current();
 	await get_tree().create_timer(1).timeout;
-	queue_free();
+	free();
