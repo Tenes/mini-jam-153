@@ -4,7 +4,7 @@ extends Node
 @onready var harpoon : Harpoon = $Harpoon;
 @onready var interactableContainer : Node2D = $InteractableContainer;
 @onready var timer: Timer = $Timer
-@export var spawnTimer: float = 1.5;
+@export var spawnTimer: float = 1;
 var interactables : Array[Interactable] = [];
 
 func _ready() -> void:

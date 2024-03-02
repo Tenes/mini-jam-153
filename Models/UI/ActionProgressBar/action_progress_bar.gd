@@ -15,6 +15,7 @@ func _process(delta):
 	%VSeparator.position.x = value/max_value * size.x
 
 func set_capture_area(start_pourcentage, pourcentage):
+	reset()
 	current_speed = base_speed
 	current_start_pourcentage = start_pourcentage
 	current_pourcentage = pourcentage

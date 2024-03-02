@@ -26,9 +26,7 @@ func updateInteractable(status):
 		var targetInteractable = self.interactables.pop_front()
 		if status == Global.BarStatus.SUCCESS:
 			self.capturedInteractables.append(targetInteractable);
-			if self.interactables.size() > 0:
-				var tempInteractables = self.interactables[0];
-				Events.on_interactable_collided.emit(tempInteractables.startSuccess, tempInteractables.lengthSuccess);
+			refreshBar();
 		else:
 			Events.update_durability.emit(-1);
 		if !isReeling:
@@ -54,9 +52,20 @@ func returnToOriginalPosition() -> void:
 	isReeling = false;
 
 func _on_scanbox_area_entered(area: Area2D) -> void:
-	if self.capturedInteractables.size() > 0:
+	var interactable = area.get_parent();
+	if area.get_parent() as Interactable not in self.capturedInteractables:
+		interactable.failedCaptureAnimation();
+		if interactable in self.interactables:
+			self.interactables.pop_front();
+			refreshBar();
+	if interactable in self.capturedInteractables:
 		var capturedInteractable = self.capturedInteractables.pop_front()
 		Events.update_score.emit(capturedInteractable.scoreValue);
 		capturedInteractable.bindTo(self, self.baseGap);
 		self.baseGap += CAPTUREG_GAP;
 	returnToOriginalPosition();
+
+func refreshBar() -> void:
+	if self.interactables.size() > 0:
+		var tempInteractables = self.interactables[0];
+		Events.on_interactable_collided.emit(tempInteractables.startSuccess, tempInteractables.lengthSuccess);
