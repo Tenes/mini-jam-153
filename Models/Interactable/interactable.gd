@@ -17,14 +17,16 @@ func spawnFrom(from: Node2D) -> void:
 	parent.add_child(self);
 	global_position = from.global_position
 
-func bindTo(from: Node2D) -> void:
+func bindTo(from: Node2D, gap: int) -> void:
 	moovement = 0;
+	deactivateAllAreas();
 	if parent != null:
-		call_deferred("reparent", from);
-	else:
-		from.add_child(self);
+		self.reparent(from);
 	parent = from;
-	global_position = Vector2(from.global_position.x - 5, from.global_position.y);
+	global_position = Vector2(from.global_position.x - gap, from.global_position.y);
 
 func deactivateCaptureArea() -> void:
 	hitbox.collision_layer = 2;
+
+func deactivateAllAreas() -> void:
+	hitbox.free();

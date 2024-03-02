@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://djreke1bdr6mw"]
+[gd_scene load_steps=3 format=3 uid="uid://djreke1bdr6mw"]
 
 [ext_resource type="PackedScene" uid="uid://8j55homb7oys" path="res://Models/UI/ActionProgressBar/action_progress_bar.tscn" id="1_adrj5"]
+[ext_resource type="Script" path="res://Models/UI/ui.gd" id="1_pnhuf"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -10,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_pnhuf")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -27,3 +29,43 @@ mouse_filter = 2
 
 [node name="ActionProgressBar" parent="MarginContainer" instance=ExtResource("1_adrj5")]
 layout_mode = 2
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.5
+offset_top = -105.5
+offset_right = 66.5
+offset_bottom = -78.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+max_value = 3.0
+step = 1.0
+value = 3.0
+show_percentage = false
+
+[node name="ScoreContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.5
+offset_top = 17.0
+offset_right = 21.5
+offset_bottom = 67.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="ScoreTitle" type="Label" parent="ScoreContainer"]
+layout_mode = 2
+text = "Score"
+horizontal_alignment = 1
+
+[node name="ScoreValue" type="Label" parent="ScoreContainer"]
+layout_mode = 2
+horizontal_alignment = 1
