@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://brawasoc7mri6"]
+[gd_scene load_steps=9 format=3 uid="uid://brawasoc7mri6"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu_scene.gd" id="1_vtil1"]
 [ext_resource type="PackedScene" uid="uid://de4oqte1nvre1" path="res://Models/Decor/parallax_container_node_2d.tscn" id="2_fwc7t"]
 [ext_resource type="Texture2D" uid="uid://caqx3n23kmt54" path="res://Assets/Extraterrestre_02.png" id="3_mesbx"]
+[ext_resource type="AudioStream" uid="uid://yloqq8aqbjh8" path="res://Assets/Sounds/ship.mp3" id="4_1x1v6"]
 
 [sub_resource type="Animation" id="Animation_lqm1x"]
 resource_name = "wobbling"
@@ -71,6 +72,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Extraterrestre02/AudioStreamPlayer2D:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_sks6s"]
 resource_name = "wobbling_2"
@@ -112,6 +125,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.26, 1.26), Vector2(-1.227, 1.277), Vector2(-4.808, 5), Vector2(-3.51733, 4.11111), Vector2(-3.03085, 3.77607), Vector2(0.5, 0.5), Vector2(0.2, 0.2)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Extraterrestre02/AudioStreamPlayer2D:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.9, 2.4, 3.5, 4.3, 5.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-5.0, -5.0, 0.0, 0.0, -2.0, -6.0, -8.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y0ra3"]
 _data = {
@@ -148,9 +173,9 @@ text = "Exit
 "
 
 [node name="Extraterrestre02" type="Sprite2D" parent="."]
-position = Vector2(801.76, 39.4841)
-rotation = -0.314285
-scale = Vector2(0.560263, 0.560263)
+position = Vector2(952.638, 25.5958)
+rotation = -0.361759
+scale = Vector2(0.66, 0.66)
 texture = ExtResource("3_mesbx")
 
 [node name="Marker2D" type="Marker2D" parent="Extraterrestre02"]
@@ -162,6 +187,13 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_y0ra3")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Extraterrestre02"]
+rotation = 0.464904
+scale = Vector2(1.14065, 1.14065)
+stream = ExtResource("4_1x1v6")
+volume_db = -6.13333
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Credit" to="." method="_on_credit_pressed"]
