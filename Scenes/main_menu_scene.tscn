@@ -148,9 +148,9 @@ text = "Exit
 "
 
 [node name="Extraterrestre02" type="Sprite2D" parent="."]
-position = Vector2(740.552, 91.5224)
-rotation = -0.511599
-scale = Vector2(0.97479, 0.97479)
+position = Vector2(801.76, 39.4841)
+rotation = -0.314285
+scale = Vector2(0.560263, 0.560263)
 texture = ExtResource("3_mesbx")
 
 [node name="Marker2D" type="Marker2D" parent="Extraterrestre02"]

@@ -1,9 +1,38 @@
-[gd_scene load_steps=7 format=3 uid="uid://chammg8r5idns"]
+[gd_scene load_steps=11 format=3 uid="uid://chammg8r5idns"]
 
 [ext_resource type="Texture2D" uid="uid://bsjdhrdybaj7l" path="res://Assets/Harpon_01_MIDDLE.png" id="1_el1rv"]
 [ext_resource type="Script" path="res://Models/Harpoon/harpoon.gd" id="1_gudjn"]
-[ext_resource type="Texture2D" uid="uid://b6xiccyc22dn8" path="res://Assets/Harpon_01_FRONT.png" id="2_nvnpr"]
+[ext_resource type="Texture2D" uid="uid://hrcn4sjdqg1h" path="res://Assets/Harpon_01_f.png" id="3_khqnt"]
 [ext_resource type="Texture2D" uid="uid://b1d6jt3bqc6t3" path="res://Assets/Harpon_01_BACK.png" id="3_mora5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sluhi"]
+atlas = ExtResource("3_khqnt")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cf0xx"]
+atlas = ExtResource("3_khqnt")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov8iw"]
+atlas = ExtResource("3_khqnt")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3brs0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sluhi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cf0xx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov8iw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6y04s"]
 size = Vector2(321, 63)
@@ -26,9 +55,11 @@ offset = Vector2(-21, -18)
 position = Vector2(-41.8768, -31.1662)
 rotation = 0.00396234
 
-[node name="SpriteFront" type="Sprite2D" parent="."]
+[node name="SpriteFront" type="AnimatedSprite2D" parent="."]
 z_index = 2
-texture = ExtResource("2_nvnpr")
+sprite_frames = SubResource("SpriteFrames_3brs0")
+frame_progress = 0.41109
+speed_scale = 0.5
 
 [node name="SpriteBack" type="Sprite2D" parent="SpriteFront"]
 z_as_relative = false
@@ -48,5 +79,6 @@ collision_mask = 2
 position = Vector2(1, -0.5)
 shape = SubResource("RectangleShape2D_imkgk")
 
+[connection signal="ready" from="SpriteFront" to="SpriteFront" method="play" binds= ["default"]]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="Scanbox" to="." method="_on_scanbox_area_entered"]

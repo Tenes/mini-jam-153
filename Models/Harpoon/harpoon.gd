@@ -4,6 +4,7 @@ class_name Harpoon
 @onready var ropeHole = $SpriteMiddle/RopeHole;
 @onready var originalPosition: Vector2 = global_position;
 @onready var hitbox: Area2D = $Hitbox
+@onready var sprite_front = $SpriteFront
 
 var interactables : Array[Interactable] = [];
 var capturedInteractables : Array[Interactable] = [];
@@ -43,8 +44,10 @@ func _on_hitbox_area_entered(area: Area2D):
 
 func playReelingAnimation() -> void:
 	isReeling = true;
+	sprite_front.speed_scale = 1.5
 	tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR);
 	tween.tween_property(self, "global_position", Vector2(global_position.x - 200, global_position.y), 0.5).from_current();
+	tween.tween_callback(func():sprite_front.speed_scale = 0.5)
 
 func returnToOriginalPosition() -> void:
 	if tween != null:
