@@ -49,7 +49,7 @@ func failedCaptureAnimation() -> void:
 	
 func playDeathSound() -> void:
 	if self is Building:
-		audio_stream_player_2d.stream = Global.BUILDING_DEATH_SOUNDS[Global.RNG.randi_range(1, 2)];
+		audio_stream_player_2d.stream = Global.BUILDING_DEATH_SOUNDS[Global.RNG.randi_range(1, 3)];
 	else:
 		audio_stream_player_2d.stream = Global.HUMAN_DEATH_SOUNDS[Global.RNG.randi_range(1, 3)];
 	audio_stream_player_2d.pitch_scale = Global.RNG.randf_range(0.8, 1.3);
@@ -57,9 +57,9 @@ func playDeathSound() -> void:
 
 func playCaptSound() -> void:
 	if self is Building:
-		audio_stream_player_2d.stream = Global.BUILDING_CAPT_SOUNDS[Global.RNG.randi_range(1, 1)];
-		audio_stream_player_2d.pitch_scale = Global.RNG.randf_range(0.7, 0.8);
+		audio_stream_player_2d.stream = Global.BUILDING_CAPT_SOUNDS[Global.RNG.randi_range(1, 3)];
+		audio_stream_player_2d.pitch_scale = Global.RNG.randf_range(0.8, 0.9);
 	else:
-		audio_stream_player_2d.stream = Global.HUMAN_CAPT_SOUNDS[Global.RNG.randi_range(1, 2)];
+		audio_stream_player_2d.stream = Global.HUMAN_CAPT_SOUNDS[Global.RNG.randi_range(1, 3)];
 		audio_stream_player_2d.pitch_scale = Global.RNG.randf_range(0.8, 1.3);
 	audio_stream_player_2d.play();

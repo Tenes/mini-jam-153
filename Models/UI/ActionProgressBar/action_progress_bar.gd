@@ -17,10 +17,10 @@ func _process(delta):
 	%VSeparator.position.x = value/max_value * size.x - %VSeparator.size.x /2
 
 func set_capture_area(start_pourcentage, pourcentage):
+	clear_capture_area()
 	current_speed = base_speed
 	current_start_pourcentage = start_pourcentage
 	current_pourcentage = pourcentage
-	clear_capture_area()
 	var rec = ColorRect.new()
 	rec.color = Color.FOREST_GREEN
 	rec.size = Vector2(pourcentage/100.0 * size.x,size.y)
@@ -41,16 +41,12 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("left_click") and current_pourcentage > -1:
 		if value >= current_start_pourcentage and value <= current_start_pourcentage+current_pourcentage:
 			var great_value = current_start_pourcentage+current_pourcentage*0.5
-			print(great_value - current_pourcentage / great_success_divider /2.0)
-			print(great_value + current_pourcentage / great_success_divider /2.0)
-			print(value)
-			print("--------")
+			clear_capture_area()
+			reset()
 			if value >= great_value - current_pourcentage / great_success_divider /2.0 and  value <= great_value + current_pourcentage / great_success_divider /2.0:
 				Events.bar_clicked.emit(Global.BarStatus.GREAT_SUCCESS)
 			else :
 				Events.bar_clicked.emit(Global.BarStatus.SUCCESS)
-			clear_capture_area()
-			reset()
 		else:
 			Events.bar_clicked.emit(Global.BarStatus.FAILED)
 

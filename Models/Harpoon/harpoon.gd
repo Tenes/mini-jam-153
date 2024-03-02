@@ -22,7 +22,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func getRopeHolePoint() -> Vector2 : 
 	return ropeHole.global_position;
 
@@ -32,8 +31,6 @@ func updateInteractable(status):
 		if status == Global.BarStatus.SUCCESS or status == Global.BarStatus.GREAT_SUCCESS:
 			self.capturedInteractables.append(targetInteractable);
 			refreshBar();
-			if status == Global.BarStatus.GREAT_SUCCESS:
-				print("GREAT")
 		if !isReeling:
 			playReelingAnimation();
 

@@ -20,14 +20,18 @@ extends Node
 @onready var BUILDING_DEATH_SOUNDS = {
 	1: preload("res://Assets/Sounds/building_death.mp3"),
 	2: preload("res://Assets/Sounds/building_death_2.mp3"),
+	3: preload("res://Assets/Sounds/building_death_3.mp3"),
 }
 @onready var HUMAN_CAPT_SOUNDS = {
 	1: preload("res://Assets/Sounds/human_capture.mp3"),
 	2: preload("res://Assets/Sounds/human_capture_2.mp3"),
+	3: preload("res://Assets/Sounds/human_capture_3.mp3"),
 }
 
 @onready var BUILDING_CAPT_SOUNDS = {
-	1: preload("res://Assets/Sounds/building_capture.mp3"),
+	1: preload("res://Assets/Sounds/building_capture_3.mp3"),
+	2: preload("res://Assets/Sounds/building_capture_2.mp3"),
+	3: preload("res://Assets/Sounds/building_capture_3.mp3"),
 }
 
 enum BarStatus {
