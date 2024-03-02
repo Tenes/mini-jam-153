@@ -11,15 +11,23 @@ extends Node
 	3: "res://Scenes/credit_scene.tscn",
 }
 
-@onready var HUMAN_SOUNDS = {
+@onready var HUMAN_DEATH_SOUNDS = {
 	1: preload("res://Assets/Sounds/human_death.mp3"),
 	2: preload("res://Assets/Sounds/human_death_2.mp3"),
 	3: preload("res://Assets/Sounds/human_death_3.mp3"),
 }
 
-@onready var BUILDING_SOUNDS = {
+@onready var BUILDING_DEATH_SOUNDS = {
 	1: preload("res://Assets/Sounds/building_death.mp3"),
 	2: preload("res://Assets/Sounds/building_death_2.mp3"),
+}
+@onready var HUMAN_CAPT_SOUNDS = {
+	1: preload("res://Assets/Sounds/human_capture.mp3"),
+	2: preload("res://Assets/Sounds/human_capture_2.mp3"),
+}
+
+@onready var BUILDING_CAPT_SOUNDS = {
+	1: preload("res://Assets/Sounds/building_capture.mp3"),
 }
 
 enum BarStatus {
