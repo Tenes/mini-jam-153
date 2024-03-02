@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b1d6jt3bqc6t3" path="res://Assets/Harpon_01_BACK.png" id="3_mora5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6y04s"]
-size = Vector2(59, 63)
+size = Vector2(213, 63)
 
 [node name="Harpoon" type="Node2D"]
 script = ExtResource("1_gudjn")
@@ -35,5 +35,7 @@ texture = ExtResource("3_mora5")
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="Shape" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(1.5, -0.5)
+position = Vector2(-75.5, -0.5)
 shape = SubResource("RectangleShape2D_6y04s")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

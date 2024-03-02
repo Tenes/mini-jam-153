@@ -22,6 +22,3 @@ func isSuccessfullyChallenged(successState: Global.BarStatus):
 	else:
 		pass;
 
-func _on_hitbox_area_entered(area):
-	Events.on_interactable_collided.emit(startSuccess, lengthSuccess);
-	Events.bar_clicked.connect(isSuccessfullyChallenged);
