@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://chammg8r5idns"]
+[gd_scene load_steps=7 format=3 uid="uid://chammg8r5idns"]
 
 [ext_resource type="Texture2D" uid="uid://bsjdhrdybaj7l" path="res://Assets/Harpon_01_MIDDLE.png" id="1_el1rv"]
 [ext_resource type="Script" path="res://Models/Harpoon/harpoon.gd" id="1_gudjn"]
@@ -7,6 +7,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6y04s"]
 size = Vector2(267, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imkgk"]
+size = Vector2(60, 63)
 
 [node name="Harpoon" type="Node2D"]
 script = ExtResource("1_gudjn")
@@ -37,4 +40,13 @@ texture = ExtResource("3_mora5")
 position = Vector2(-102.5, -0.5)
 shape = SubResource("RectangleShape2D_6y04s")
 
+[node name="Scanbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Shape" type="CollisionShape2D" parent="Scanbox"]
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_imkgk")
+
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="Scanbox" to="." method="_on_scanbox_area_entered"]

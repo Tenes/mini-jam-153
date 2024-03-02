@@ -5,9 +5,9 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ei8kr"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_xp6ne"]
-color = Color(0.905882, 0.462745, 0, 1)
-grow_begin = 4.0
-grow_end = 4.0
+color = Color(0.780392, 0.780392, 0.780392, 1)
+grow_begin = 2.0
+grow_end = 2.0
 thickness = 41
 
 [node name="ActionProgressBar" type="ProgressBar"]

@@ -7,6 +7,7 @@ extends Node
 }
 
 enum BarStatus {
+	DEFAULT = 0,
 	SUCCESS = 1,
 	GREAT_SUCCESS = 2,
 	FAILED = 3
