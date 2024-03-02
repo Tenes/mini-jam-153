@@ -1,11 +1,13 @@
 extends Node
 
-@onready var rng = RandomNumberGenerator.new();
-@onready var Humans = {
+@onready var RNG = RandomNumberGenerator.new();
+@onready var INTERACTABLES = {
 	1: preload("res://Models/Human/human.tscn"),
-}
-@onready var Buildings = {
-	1: preload("res://Models/Building/building.tscn"),
+	2: preload("res://Models/Building/building.tscn"),
 }
 
-#func _ready() -> void:
+enum BarStatus {
+	SUCCESS = 1,
+	GREAT_SUCCESS = 2,
+	FAILED = 3
+}

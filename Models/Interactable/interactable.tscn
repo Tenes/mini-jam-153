@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw75lst4ci8fh"]
+
+[ext_resource type="Script" path="res://Models/Interactable/interactable.gd" id="1_ju4d7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_spf4m"]
+size = Vector2(8, 13)
+
+[node name="Interactable" type="Node2D"]
+script = ExtResource("1_ju4d7")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, -6)
+
+[node name="Shape" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_spf4m")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

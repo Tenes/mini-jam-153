@@ -8,9 +8,11 @@
 script = ExtResource("1_mbhew")
 
 [node name="Harpoon" parent="." instance=ExtResource("2_skcxh")]
-position = Vector2(236, 137)
+position = Vector2(428, 236)
 
 [node name="Rope" type="Line2D" parent="."]
 width = 3.0
 default_color = Color(0.6, 0.901961, 0.372549, 1)
 script = ExtResource("3_pj0cb")
+
+[node name="InteractableContainer" type="Node2D" parent="."]

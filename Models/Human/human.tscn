@@ -1,17 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvm20asnfrmyn"]
+[gd_scene load_steps=4 format=3 uid="uid://dvm20asnfrmyn"]
 
+[ext_resource type="PackedScene" uid="uid://dw75lst4ci8fh" path="res://Models/Interactable/interactable.tscn" id="1_mcpo3"]
 [ext_resource type="Texture2D" uid="uid://iiwvprt2ogu" path="res://Assets/Peon_01.png" id="1_n6ap3"]
+[ext_resource type="Script" path="res://Models/Human/human.gd" id="2_fiebf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_spf4m"]
-size = Vector2(9, 14)
+[node name="Interactable" instance=ExtResource("1_mcpo3")]
+script = ExtResource("2_fiebf")
 
-[node name="Human" type="Node2D"]
+[node name="Hitbox" parent="." index="0"]
+position = Vector2(0, -8)
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Shape" parent="Hitbox" index="0"]
+position = Vector2(0, 0.5)
 
-[node name="Shape" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0.5, 0)
-shape = SubResource("RectangleShape2D_spf4m")
-
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" parent="." index="1"]
+position = Vector2(0, -8)
 texture = ExtResource("1_n6ap3")
