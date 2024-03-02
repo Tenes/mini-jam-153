@@ -29,9 +29,11 @@ func getRopeHolePoint() -> Vector2 :
 func updateInteractable(status):
 	if interactables.size() > 0:
 		var targetInteractable = self.interactables.pop_front()
-		if status == Global.BarStatus.SUCCESS:
+		if status == Global.BarStatus.SUCCESS or status == Global.BarStatus.GREAT_SUCCESS:
 			self.capturedInteractables.append(targetInteractable);
 			refreshBar();
+			if status == Global.BarStatus.GREAT_SUCCESS:
+				print("GREAT")
 		if !isReeling:
 			playReelingAnimation();
 
