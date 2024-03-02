@@ -116,8 +116,8 @@ position = Vector2(0, -24)
 [node name="Timer" type="Timer" parent="GameScreen"]
 
 [node name="Extraterrestre02" type="Sprite2D" parent="GameScreen"]
-position = Vector2(241.1, 184.691)
-rotation = -0.257055
+position = Vector2(252.851, 187.369)
+rotation = -0.186045
 scale = Vector2(-1, 1)
 texture = ExtResource("6_yb2po")
 

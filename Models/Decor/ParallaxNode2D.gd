@@ -22,6 +22,6 @@ func _ready():
 	container = get_parent()
 	pass # Replace with function body.
 
-func _process(delta):
+func _process(_delta):
 	position = Vector2(fmod(container.offset.x * offset_scale.x, repeat.x), position.y)
 

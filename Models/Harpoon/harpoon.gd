@@ -17,9 +17,6 @@ func _ready() -> void:
 	hitbox.global_position = tempPos;
 	Events.bar_clicked.connect(updateInteractable);
 
-func _process(delta: float) -> void:
-	pass
-
 func getRopeHolePoint() -> Vector2 : 
 	return ropeHole.global_position;
 

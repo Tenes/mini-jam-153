@@ -31,8 +31,8 @@ func bindTo(from: Node2D) -> void:
 	if parent != null:
 		self.reparent(from);
 	parent = from;
-	var newPos = Vector2(Global.RNG.randi_range(from.global_position.x - 20, from.global_position.x + 5),\
-						(Global.RNG.randi_range(from.global_position.y - 10, from.global_position.y + 30)));
+	var newPos = Vector2(Global.RNG.randi_range(int(from.global_position.x) - 20, int(from.global_position.x) + 5),\
+						(Global.RNG.randi_range(int(from.global_position.y) - 10, int(from.global_position.y) + 30)));
 	global_position = newPos;
 	tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR);
 	if self is Building:
@@ -74,7 +74,7 @@ func playCaptSound() -> void:
 		audio_stream_player_2d.pitch_scale = Global.RNG.randf_range(0.8, 1.3);
 	audio_stream_player_2d.play();
 
-func instantiate_particles(particle_list,offset = Vector2.ZERO, parent = self) -> void:
+func instantiate_particles(particle_list,offset = Vector2.ZERO, pparent = self) -> void:
 	if particle_list == null:
 		return
 	for particle in particle_list:
@@ -82,7 +82,7 @@ func instantiate_particles(particle_list,offset = Vector2.ZERO, parent = self) -
 		instance.emitting = true
 		instance.finished.connect(func():instance.queue_free())
 		
-		parent.add_child(instance)
+		pparent.add_child(instance)
 		instance.global_position = global_position + offset
 	
 func is_captured(success_state : Global.BarStatus) -> void:

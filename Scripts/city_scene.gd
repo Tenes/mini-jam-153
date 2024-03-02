@@ -21,16 +21,14 @@ func interactableSpawner() -> void:
 	tempInteractable.spawnFrom(interactableContainer);
 	interactables.append(tempInteractable);
 
-
 func _on_timer_timeout() -> void:
 	interactableSpawner();
 
 func displayEndScreen(finalScore, bestMultiplier) -> void:
 	game_screen.queue_free();
-	Global.showNode(end_screen);
+	end_screen.show();
 	final_score.text = str(finalScore);
 	final_multiplier.text = "x %s"%bestMultiplier;
-
 
 func _on_main_menu_button_pressed() -> void:
 	get_tree().change_scene_to_file(Global.SCENES[2]);
