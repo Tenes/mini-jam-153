@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var offset_scale : Vector2i
+@export var offset_scale : Vector2
 @export var repeat : Vector2i
 
 var child : Node2D
@@ -23,5 +23,5 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
-	position = Vector2i(fmod(container.offset.x, repeat.x), position.y) * offset_scale
+	position = Vector2(fmod(container.offset.x * offset_scale.x, repeat.x), position.y)
 

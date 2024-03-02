@@ -9,7 +9,7 @@ script = ExtResource("1_c7ftj")
 
 [node name="ParallaxNode2D" type="Node2D" parent="."]
 script = ExtResource("2_viebs")
-offset_scale = Vector2i(1, 0)
+offset_scale = Vector2(0.5, 0)
 repeat = Vector2i(640, 0)
 
 [node name="Terrain01" type="Sprite2D" parent="ParallaxNode2D"]
