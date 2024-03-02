@@ -25,7 +25,7 @@ mouse_filter = 2
 theme_override_styles/fill = SubResource("StyleBoxEmpty_ei8kr")
 show_percentage = false
 script = ExtResource("1_ku4cg")
-base_speed = 100.0
+base_speed = 150.0
 
 [node name="AreaContainer" type="Control" parent="."]
 layout_mode = 1
