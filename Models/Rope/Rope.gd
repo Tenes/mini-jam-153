@@ -9,6 +9,6 @@ func linkToHarpoon(harpoon: Harpoon) -> void:
 	add_point(harpoon.getRopeHolePoint());
 	linkedHarpoon = harpoon;
 
-func update() -> void:
+func _process(delta: float) -> void:
 	self.points[1] = linkedHarpoon.getRopeHolePoint();
 	self.points[0] = origin.global_position;

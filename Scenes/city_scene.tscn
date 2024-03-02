@@ -12,7 +12,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Extraterrestre02:position")
+tracks/0/path = NodePath("GameScreen/Extraterrestre02:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +24,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Extraterrestre02:rotation")
+tracks/1/path = NodePath("GameScreen/Extraterrestre02:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -36,7 +36,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Extraterrestre02:scale")
+tracks/2/path = NodePath("GameScreen/Extraterrestre02:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -53,7 +53,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Extraterrestre02:position")
+tracks/0/path = NodePath("GameScreen/Extraterrestre02:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -65,7 +65,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Extraterrestre02:rotation")
+tracks/1/path = NodePath("GameScreen/Extraterrestre02:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -84,50 +84,112 @@ _data = {
 [node name="CityScene" type="Node"]
 script = ExtResource("1_mbhew")
 
-[node name="Harpoon" parent="." instance=ExtResource("2_skcxh")]
+[node name="GameScreen" type="Node2D" parent="."]
+
+[node name="Harpoon" parent="GameScreen" instance=ExtResource("2_skcxh")]
 position = Vector2(608, 314)
 
-[node name="Rope" type="Line2D" parent="." node_paths=PackedStringArray("origin")]
+[node name="Rope" type="Line2D" parent="GameScreen" node_paths=PackedStringArray("origin")]
 width = 3.0
 default_color = Color(0, 0, 0, 1)
 script = ExtResource("3_pj0cb")
 origin = NodePath("../Extraterrestre02/Marker2D")
 
-[node name="InteractableContainer" type="Node2D" parent="."]
+[node name="InteractableContainer" type="Node2D" parent="GameScreen"]
 position = Vector2(1, 335)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="GameScreen"]
 
-[node name="UI" parent="CanvasLayer" instance=ExtResource("4_d0i3i")]
+[node name="UI" parent="GameScreen/CanvasLayer" instance=ExtResource("4_d0i3i")]
 size_flags_horizontal = 3
 size_flags_vertical = 3
 metadata/_edit_lock_ = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="GameScreen"]
 position = Vector2(427, 266)
 ignore_rotation = false
 zoom = Vector2(1.5, 1.5)
 
-[node name="ParallaxContainerNode2D" parent="." instance=ExtResource("5_1sjta")]
+[node name="ParallaxContainerNode2D" parent="GameScreen" instance=ExtResource("5_1sjta")]
 position = Vector2(0, -24)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="GameScreen"]
 
-[node name="Extraterrestre02" type="Sprite2D" parent="."]
-position = Vector2(253.247, 183.257)
-rotation = -0.125845
+[node name="Extraterrestre02" type="Sprite2D" parent="GameScreen"]
+position = Vector2(241.1, 184.691)
+rotation = -0.257055
 scale = Vector2(-1, 1)
 texture = ExtResource("6_yb2po")
 
-[node name="Marker2D" type="Marker2D" parent="Extraterrestre02"]
+[node name="Marker2D" type="Marker2D" parent="GameScreen/Extraterrestre02"]
 position = Vector2(-11, -15.6254)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Extraterrestre02"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameScreen/Extraterrestre02"]
 reset_on_save = false
-root_node = NodePath("../..")
+root_node = NodePath("../../..")
 libraries = {
 "": SubResource("AnimationLibrary_y0ra3")
 }
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="ready" from="Extraterrestre02/AnimationPlayer" to="Extraterrestre02/AnimationPlayer" method="play" binds= ["wobbling"]]
+[node name="EndScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ParallaxContainerNode2D" parent="EndScreen" instance=ExtResource("5_1sjta")]
+modulate = Color(1, 0.376471, 0.301961, 1)
+position = Vector2(0, -24)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EndScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EndScreen/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Label1" type="Label" parent="EndScreen/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Your line broke.."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="EndScreen/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Your final score was"
+horizontal_alignment = 1
+
+[node name="FinalScore" type="Label" parent="EndScreen/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="EndScreen/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Your best multiplier was"
+horizontal_alignment = 1
+
+[node name="FinalMultiplier" type="Label" parent="EndScreen/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "x 0"
+horizontal_alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="EndScreen/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main menu"
+
+[connection signal="timeout" from="GameScreen/Timer" to="." method="_on_timer_timeout"]
+[connection signal="ready" from="GameScreen/Extraterrestre02/AnimationPlayer" to="GameScreen/Extraterrestre02/AnimationPlayer" method="play" binds= ["wobbling"]]
+[connection signal="pressed" from="EndScreen/HBoxContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

@@ -6,3 +6,4 @@ signal update_score(value);
 signal update_multiplier(isSuccess);
 signal update_durability(value);
 signal reset_bar();
+signal player_death(finalScore, bestMultiplier);

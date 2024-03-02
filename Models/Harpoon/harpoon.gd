@@ -10,7 +10,6 @@ var interactables : Array[Interactable] = [];
 var capturedInteractables : Array[Interactable] = [];
 var tween: Tween;
 var isReeling: bool = false;
-var hp: int = 3;
 
 func _ready() -> void:
 	var tempPos = hitbox.global_position;
@@ -50,8 +49,8 @@ func playReelingAnimation() -> void:
 	tween.tween_callback(func():sprite_front.speed_scale = 0.5)
 
 func returnToOriginalPosition() -> void:
-	if tween != null:
-		tween.stop();
+	if tween:
+		tween.kill();
 	tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR);
 	tween.tween_property(self, "global_position", Vector2(originalPosition.x, originalPosition.y), 0.25).from_current();
 	isReeling = false;

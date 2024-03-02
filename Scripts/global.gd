@@ -40,3 +40,29 @@ enum BarStatus {
 	GREAT_SUCCESS = 2,
 	FAILED = 3
 }
+
+
+static func toggleNode(node: Node):
+	if node.visible:
+		node.hide()
+		node.set_process(false);
+		node.set_physics_process(false);
+		node.set_process_input(false);
+	else:
+		node.show()
+		node.set_process(true);
+		node.set_physics_process(true);
+		node.set_process_input(true);
+
+static func hideNode(node: Node):
+	node.hide()
+	node.set_process(false);
+	node.set_physics_process(false);
+	node.set_process_input(false);
+
+static func showNode(node: Node):
+	node.show();
+	node.set_process(true);
+	node.set_physics_process(true);
+	node.set_process_input(true);
+

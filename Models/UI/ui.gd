@@ -6,6 +6,8 @@ extends Control
 var tween: Tween;
 var score = 0;
 var scoreMultiplier = 1;
+var bestScoreMultiplier = 1;
+var health: int = 3;
 
 func _ready() -> void:
 	updateScore(0);
@@ -15,7 +17,10 @@ func _ready() -> void:
 	Events.update_multiplier.connect(updateMultiplier);
 
 func updateDurability(value: int) -> void:
+	health += value;
 	health_bar.value += value;
+	if health == 0:
+		Events.player_death.emit(score, bestScoreMultiplier);
 
 func updateScore(value: int) -> void:
 	score += value * scoreMultiplier;
@@ -26,6 +31,9 @@ func updateMultiplier(isSuccess: bool) -> void:
 		scoreMultiplier += 1;
 		animation_player.play("upgrade");
 	else:
+		if scoreMultiplier > bestScoreMultiplier:
+			bestScoreMultiplier = scoreMultiplier;
 		scoreMultiplier = 1;
 	score_multiplier.text = str(scoreMultiplier);
-	
+
+
