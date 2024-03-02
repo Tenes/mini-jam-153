@@ -40,7 +40,8 @@ func playReelingAnimation() -> void:
 	#tween.tween_property(self, "global_position", Vector2(originalPosition.x - 50, originalPosition.y), 1).from_current();
 
 func returnToOriginalPosition() -> void:
-	tween.stop();
+	if tween != null:
+		tween.stop();
 	tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR);
 	tween.tween_property(self, "global_position", Vector2(originalPosition.x, originalPosition.y), 0.5).from_current();
 	isReeling = false;
