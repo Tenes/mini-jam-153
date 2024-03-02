@@ -22,10 +22,12 @@ func set_capture_area(start_pourcentage, pourcentage):
 	current_start_pourcentage = start_pourcentage
 	current_pourcentage = pourcentage
 	var rec = ColorRect.new()
+	rec.mouse_filter = Control.MOUSE_FILTER_IGNORE;
 	rec.color = Color.FOREST_GREEN
 	rec.size = Vector2(pourcentage/100.0 * size.x,size.y)
 	rec.position = Vector2(start_pourcentage/100.0 * size.x,0)
 	var great_rec = ColorRect.new()
+	great_rec.mouse_filter = Control.MOUSE_FILTER_IGNORE;
 	great_rec.color = Color.GOLD
 	var great_rec_size = pourcentage/great_success_divider
 	great_rec.size = Vector2(great_rec_size/100.0 * size.x,size.y)
@@ -42,10 +44,11 @@ func _unhandled_input(event):
 		if value >= current_start_pourcentage and value <= current_start_pourcentage+current_pourcentage:
 			var great_value = current_start_pourcentage+current_pourcentage*0.5
 			clear_capture_area()
-			reset()
 			if value >= great_value - current_pourcentage / great_success_divider /2.0 and  value <= great_value + current_pourcentage / great_success_divider /2.0:
+				reset()
 				Events.bar_clicked.emit(Global.BarStatus.GREAT_SUCCESS)
 			else :
+				reset()
 				Events.bar_clicked.emit(Global.BarStatus.SUCCESS)
 		else:
 			Events.bar_clicked.emit(Global.BarStatus.FAILED)

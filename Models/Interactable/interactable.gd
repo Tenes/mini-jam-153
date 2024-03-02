@@ -7,6 +7,7 @@ class_name Interactable
 @onready var sprite: Sprite2D = $Sprite
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 const direction : Array[int] = [-1, 1];
+const scales : Array[float] = [0.25, 0.5, 2, 3];
 
 var moovement: int = 1;
 var tween: Tween;
@@ -21,13 +22,18 @@ func spawnFrom(from: Node2D) -> void:
 	parent.add_child(self);
 	global_position = from.global_position
 
-func bindTo(from: Node2D, gap: int) -> void:
+func bindTo(from: Node2D) -> void:
 	moovement = 0;
 	deactivateAllAreas();
 	if parent != null:
 		self.reparent(from);
 	parent = from;
-	global_position = Vector2(from.global_position.x - gap, from.global_position.y);
+	var newPos = Vector2(Global.RNG.randi_range(from.global_position.x - 20, from.global_position.x + 5),\
+						(Global.RNG.randi_range(from.global_position.y - 10, from.global_position.y + 30)));
+	global_position = newPos;
+	tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR);
+	if self is Building:
+		tween.tween_property(sprite, "scale", Vector2(0.25, 0.25), 0.25).set_trans(Tween.TRANS_LINEAR).from_current();
 	playCaptSound();
 
 func deactivateCaptureArea() -> void:
@@ -37,10 +43,10 @@ func deactivateAllAreas() -> void:
 	hitbox.free();
 	
 func failedCaptureAnimation() -> void:
-	var failedDuration = Global.RNG.randf_range(0.01, 1);
-	var scaleValue = Global.RNG.randi_range(1, 4);
+	var failedDuration = Global.RNG.randf_range(0.1, 1);
+	var scaleValue = scales.pick_random();
 	tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR);
-	tween.tween_property(self, "global_position", Vector2(Global.RNG.randi_range(-200, 600), -100), failedDuration).set_trans(Tween.TRANS_LINEAR).from_current();
+	tween.tween_property(self, "global_position", Vector2(Global.RNG.randi_range(-200, 600), -200), failedDuration).set_trans(Tween.TRANS_LINEAR).from_current();
 	tween.parallel().tween_property(sprite, "rotation", direction.pick_random() * 3000, failedDuration).set_trans(Tween.TRANS_LINEAR).from_current();
 	tween.parallel().tween_property(sprite, "scale", Vector2(scaleValue, scaleValue), failedDuration).set_trans(Tween.TRANS_LINEAR).from_current();
 	playDeathSound();

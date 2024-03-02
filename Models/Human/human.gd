@@ -3,5 +3,5 @@ class_name Human
 
 func _ready() -> void:
 	scoreValue = 10;
-	startSuccess = 20;
-	lengthSuccess = 20;
+	startSuccess = 30;
+	lengthSuccess = 30;

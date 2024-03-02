@@ -3,5 +3,5 @@ class_name Building
 
 func _ready() -> void:
 	scoreValue = 50;
-	startSuccess = 80;
-	lengthSuccess = 20;
+	startSuccess = 70;
+	lengthSuccess = 30;

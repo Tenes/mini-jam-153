@@ -10,8 +10,6 @@ var interactables : Array[Interactable] = [];
 var capturedInteractables : Array[Interactable] = [];
 var tween: Tween;
 var isReeling: bool = false;
-var baseGap: int = 3;
-const CAPTUREG_GAP: int = 3;
 var hp: int = 3;
 
 func _ready() -> void:
@@ -30,6 +28,7 @@ func updateInteractable(status):
 	if interactables.size() > 0:
 		var targetInteractable = self.interactables.pop_front()
 		if status == Global.BarStatus.SUCCESS or status == Global.BarStatus.GREAT_SUCCESS:
+			Events.update_multiplier.emit(status == Global.BarStatus.GREAT_SUCCESS);
 			self.capturedInteractables.append(targetInteractable);
 			refreshBar();
 		if !isReeling:
@@ -64,12 +63,12 @@ func _on_scanbox_area_entered(area: Area2D) -> void:
 		interactable.failedCaptureAnimation();
 		Events.reset_bar.emit();
 		Events.update_durability.emit(-1);
+		Events.update_multiplier.emit(false);
 		refreshBar();
 	if interactable in self.capturedInteractables:
 		var capturedInteractable = self.capturedInteractables.pop_front()
 		Events.update_score.emit(capturedInteractable.scoreValue);
-		capturedInteractable.bindTo(self, self.baseGap);
-		self.baseGap += CAPTUREG_GAP;
+		capturedInteractable.bindTo(self);
 	returnToOriginalPosition();
 
 func refreshBar() -> void:
