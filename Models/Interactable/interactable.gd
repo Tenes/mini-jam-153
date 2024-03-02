@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 func spawnFrom(from: Node2D):
 	parent = from;
 	parent.add_child(self);
-	global_position = Vector2(-30, 260)
+	global_position = from.global_position
 
 func isSuccessfullyChallenged(successState: Global.BarStatus):
 	if successState == Global.BarStatus.SUCCESS:

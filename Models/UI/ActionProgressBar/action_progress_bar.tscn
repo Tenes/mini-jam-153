@@ -5,9 +5,9 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ei8kr"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_xp6ne"]
-color = Color(0.780392, 0.780392, 0.780392, 1)
-grow_begin = 2.0
-grow_end = 2.0
+color = Color(0.905882, 0.462745, 0, 1)
+grow_begin = 4.0
+grow_end = 4.0
 thickness = 41
 
 [node name="ActionProgressBar" type="ProgressBar"]
@@ -25,6 +25,7 @@ mouse_filter = 2
 theme_override_styles/fill = SubResource("StyleBoxEmpty_ei8kr")
 show_percentage = false
 script = ExtResource("1_ku4cg")
+base_speed = 150.0
 current_speed = 300.0
 
 [node name="AreaContainer" type="Control" parent="."]
@@ -39,7 +40,7 @@ mouse_filter = 2
 [node name="VSeparator" type="VSeparator" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_right = 4.0
+offset_right = 6.0
 offset_bottom = 40.0
 mouse_filter = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_xp6ne")

@@ -19,7 +19,7 @@ func set_capture_area(start_pourcentage, pourcentage):
 	current_pourcentage = pourcentage
 	clear_capture_area()
 	var rec = ColorRect.new()
-	rec.color = Color.AQUAMARINE
+	rec.color = Color.FOREST_GREEN
 	rec.size = Vector2(pourcentage/100.0 * size.x,size.y)
 	rec.position = Vector2(start_pourcentage/100.0 * size.x,0)
 	$AreaContainer.add_child(rec)

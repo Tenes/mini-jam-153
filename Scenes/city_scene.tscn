@@ -9,7 +9,7 @@
 script = ExtResource("1_mbhew")
 
 [node name="Harpoon" parent="." instance=ExtResource("2_skcxh")]
-position = Vector2(428, 236)
+position = Vector2(608, 328)
 
 [node name="Rope" type="Line2D" parent="."]
 width = 3.0
@@ -17,7 +17,16 @@ default_color = Color(0.6, 0.901961, 0.372549, 1)
 script = ExtResource("3_pj0cb")
 
 [node name="InteractableContainer" type="Node2D" parent="."]
+position = Vector2(1, 336)
 
-[node name="UI" parent="." instance=ExtResource("4_d0i3i")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("4_d0i3i")]
 size_flags_horizontal = 3
 size_flags_vertical = 3
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(427, 266)
+ignore_rotation = false
+zoom = Vector2(1.5, 1.5)
