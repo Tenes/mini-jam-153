@@ -3,6 +3,7 @@ extends ProgressBar
 @export var current_speed = 100.0
 var current_start_pourcentage = -1
 var current_pourcentage = -1
+@onready var area_container = $AreaContainer
 
 func _ready():
 	current_speed = base_speed
@@ -22,10 +23,10 @@ func set_capture_area(start_pourcentage, pourcentage):
 	rec.color = Color.FOREST_GREEN
 	rec.size = Vector2(pourcentage/100.0 * size.x,size.y)
 	rec.position = Vector2(start_pourcentage/100.0 * size.x,0)
-	$AreaContainer.add_child(rec)
+	area_container.add_child(rec)
 	
 func clear_capture_area():
-	for child in $AreaContainer.get_children():
+	for child in area_container.get_children():
 		child.queue_free()
 
 func _unhandled_input(event):
