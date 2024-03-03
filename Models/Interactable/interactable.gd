@@ -9,6 +9,7 @@ class_name Interactable
 @onready var secondary_sound_player_2d = $SecondarySoundPlayer2D
 @export var capture_particles : Array[PackedScene]
 @export var destruction_particles : Array[PackedScene]
+@onready var animation_player = $AnimationPlayer
 
 const direction : Array[int] = [-1, 1];
 const scales : Array[float] = [0.25, 0.5, 2, 3];
@@ -31,6 +32,7 @@ func spawnFrom(from: Node2D, multiplier: float) -> void:
 func bindTo(from: Node2D) -> void:
 	moovement = 0;
 	deactivateAllAreas();
+	animation_player.queue_free()
 	if parent != null:
 		self.reparent(from);
 	parent = from;

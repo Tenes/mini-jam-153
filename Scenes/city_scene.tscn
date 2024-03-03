@@ -56,7 +56,7 @@ script = ExtResource("3_pj0cb")
 origin = NodePath("../Extraterrestre02/Marker2D")
 
 [node name="InteractableContainer" type="Node2D" parent="GameScreen"]
-position = Vector2(1, 335)
+position = Vector2(1, 336)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="GameScreen"]
 
@@ -76,8 +76,8 @@ position = Vector2(0, -24)
 [node name="Timer" type="Timer" parent="GameScreen"]
 
 [node name="Extraterrestre02" type="Sprite2D" parent="GameScreen"]
-position = Vector2(246.159, 192.966)
-rotation = -0.336146
+position = Vector2(243.707, 193.438)
+rotation = -0.362935
 scale = Vector2(-1, 1)
 texture = ExtResource("6_yb2po")
 
