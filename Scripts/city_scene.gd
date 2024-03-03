@@ -12,9 +12,9 @@ extends Node
 @export var waveDownTimer: float = 1.5;
 var interactables : Array[Interactable] = [];
 var difficultyMultiplier:  = 1.0;
-const waveTimerSpawnRate : Array[float] = [0.9, 1, 1.5, 1.25];
-const waveDifficulty : Array[float] = [0.75, 1.25, 3, 2];
-const waveLength: Array[float] = [15, 10, 5, 8];
+const waveTimerSpawnRate : Array[float] = [0.9, 1, 1, 1.5, 1.25];
+const waveDifficulty : Array[float] = [0.75, 1, 1.25, 2.25, 1.75];
+const waveLength: Array[float] = [15, 10, 10, 5, 8];
 var currentWave: int;
 var spawnedEnnemies: float;
 var currentWaveLength: float;
@@ -68,7 +68,7 @@ func setupWaveTimer() -> void:
 	waveTimer.one_shot = true;
 
 func waveSpawner() -> void:
-	currentWave = Global.RNG.randi_range(0, 3);
+	currentWave = Global.RNG.randi_range(0, waveLength.size() - 1);
 	spawnTimer.wait_time = waveTimerSpawnRate[currentWave];
 	if spawnTimer.timeout.is_connected(interactableSpawner):
 		spawnTimer.timeout.disconnect(interactableSpawner);
