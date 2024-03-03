@@ -1,7 +1,93 @@
-[gd_scene load_steps=6 format=3 uid="uid://djreke1bdr6mw"]
+[gd_scene load_steps=10 format=3 uid="uid://djreke1bdr6mw"]
 
 [ext_resource type="PackedScene" uid="uid://8j55homb7oys" path="res://Models/UI/ActionProgressBar/action_progress_bar.tscn" id="1_adrj5"]
 [ext_resource type="Script" path="res://Models/UI/ui.gd" id="1_pnhuf"]
+
+[sub_resource type="Animation" id="Animation_uhycu"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(113, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(304, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_p1vc8"]
+resource_name = "shake_great_success"
+length = 0.6
+step = 0.0333333
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(113, -0.25, 0, 0.25, 0, 127, -0.25, 0, 0.25, 0, 100, -0.25, 0, 0.25, 0, 113, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1332, 0.2997, 0.4995)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(304, -0.25, 0, 0.25, 0, 312, -0.25, 0, 0.25, 0, 298, -0.25, 0, 0.25, 0, 304, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2331, 0.4329, 0.5994)
+}
+
+[sub_resource type="Animation" id="Animation_k7cb7"]
+resource_name = "shake"
+length = 0.6
+step = 0.0333333
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(113, -0.25, 0, 0.25, 0, 120, -0.25, 0, 0.25, 0, 109, -0.25, 0, 0.25, 0, 113, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1332, 0.2997, 0.4995)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(304, -0.25, 0, 0.25, 0, 308, -0.25, 0, 0.25, 0, 300, -0.25, 0, 0.25, 0, 304, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2331, 0.4329, 0.5994)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xww6p"]
+_data = {
+"RESET": SubResource("Animation_uhycu"),
+"shake_great_success": SubResource("Animation_p1vc8"),
+"shake_success": SubResource("Animation_k7cb7")
+}
 
 [sub_resource type="Animation" id="Animation_l8tll"]
 length = 0.001
@@ -179,6 +265,25 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_pnhuf")
 
+[node name="FloatingTextContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -71.0
+offset_right = -69.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(26, 16)
+
+[node name="FloatingScore" type="Label" parent="FloatingTextContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 12
@@ -187,7 +292,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 113.0
 offset_top = -56.0
-offset_right = -113.0
+offset_right = -114.0
 offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -195,6 +300,13 @@ mouse_filter = 2
 
 [node name="ActionProgressBar" parent="MarginContainer" instance=ExtResource("1_adrj5")]
 layout_mode = 2
+base_speed = 200.0
+
+[node name="ProgressBarAnimationPlayer" type="AnimationPlayer" parent="MarginContainer"]
+libraries = {
+"": SubResource("AnimationLibrary_xww6p")
+}
+speed_scale = 5.0
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 layout_mode = 1
@@ -237,26 +349,34 @@ layout_mode = 2
 horizontal_alignment = 1
 
 [node name="MultiplerHolder" type="Control" parent="."]
-layout_mode = 2
-anchors_preset = 0
-offset_left = 350.0
-offset_top = 17.0
-offset_right = 373.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -39.0
+offset_right = -81.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
 pivot_offset = Vector2(12, 13)
 
-[node name="X" type="Label" parent="MultiplerHolder"]
-layout_mode = 2
-offset_right = 9.0
+[node name="x" type="Label" parent="MultiplerHolder"]
+layout_mode = 0
+offset_right = 35.0
 offset_bottom = 23.0
-text = "x"
+text = "x
+"
 
 [node name="ScoreMultiplier" type="Label" parent="MultiplerHolder"]
 layout_mode = 2
 offset_left = 13.0
-offset_right = 23.0
+offset_right = 36.0
 offset_bottom = 23.0
-text = "1"
+text = "1
+"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MultiplerHolder"]
 libraries = {

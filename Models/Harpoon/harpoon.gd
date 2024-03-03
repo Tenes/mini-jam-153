@@ -46,7 +46,7 @@ func playReelingAnimation() -> void:
 	tween.tween_callback(func():sprite_front.speed_scale = 0.5)
 
 func returnToOriginalPosition() -> void:
-	if tween:
+	if tween and tween.is_running():
 		tween.kill();
 	tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR);
 	tween.tween_property(self, "global_position", Vector2(originalPosition.x, originalPosition.y), 0.25).from_current();

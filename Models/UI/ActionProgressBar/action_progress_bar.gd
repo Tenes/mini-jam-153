@@ -1,6 +1,6 @@
 extends ProgressBar
 @export var base_speed = 200.0
-@export var great_success_divider = 7.0
+@export var great_success_divider = 6.0
 var current_speed = 0
 var current_start_pourcentage = -1
 var current_pourcentage = -1
@@ -24,11 +24,13 @@ func set_capture_area(start_pourcentage, pourcentage):
 	var rec = ColorRect.new()
 	rec.mouse_filter = Control.MOUSE_FILTER_IGNORE;
 	rec.color = Color.FOREST_GREEN
+	rec.color.a8 = 180;
 	rec.size = Vector2(pourcentage/100.0 * size.x,size.y)
 	rec.position = Vector2(start_pourcentage/100.0 * size.x,0)
 	var great_rec = ColorRect.new()
 	great_rec.mouse_filter = Control.MOUSE_FILTER_IGNORE;
 	great_rec.color = Color.GOLD
+	great_rec.color.a8 = 200;
 	var great_rec_size = pourcentage/great_success_divider
 	great_rec.size = Vector2(great_rec_size/100.0 * size.x,size.y)
 	great_rec.position = Vector2(start_pourcentage/100.0 * size.x + (pourcentage/100.0 * size.x/2) - great_rec_size/100.0 * size.x/2 ,0)

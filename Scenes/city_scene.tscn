@@ -87,7 +87,7 @@ script = ExtResource("1_mbhew")
 [node name="GameScreen" type="Node2D" parent="."]
 
 [node name="Harpoon" parent="GameScreen" instance=ExtResource("2_skcxh")]
-position = Vector2(608, 314)
+position = Vector2(605, 314)
 
 [node name="Rope" type="Line2D" parent="GameScreen" node_paths=PackedStringArray("origin")]
 width = 3.0
@@ -116,8 +116,8 @@ position = Vector2(0, -24)
 [node name="Timer" type="Timer" parent="GameScreen"]
 
 [node name="Extraterrestre02" type="Sprite2D" parent="GameScreen"]
-position = Vector2(252.851, 187.369)
-rotation = -0.186045
+position = Vector2(253.155, 181.832)
+rotation = -0.104044
 scale = Vector2(-1, 1)
 texture = ExtResource("6_yb2po")
 
@@ -183,7 +183,12 @@ horizontal_alignment = 1
 
 [node name="FinalMultiplier" type="Label" parent="EndScreen/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "x 0"
+text = "x%s"
+horizontal_alignment = 1
+
+[node name="HiddenMultiplicator" type="Label" parent="EndScreen/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "(Your hidden difficulty factor was x%s)"
 horizontal_alignment = 1
 
 [node name="MainMenuButton" type="Button" parent="EndScreen/HBoxContainer/VBoxContainer"]

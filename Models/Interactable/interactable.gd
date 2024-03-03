@@ -16,11 +16,13 @@ var moovement: int = 1;
 var tween: Tween;
 var scoreValue: int = 0;
 var parent: Node2D;
+var difficultyMultiplier: float = 1.0
 
 func _process(delta: float) -> void:
-	global_position.x += (moovement * delta * 100);
+	global_position.x += (moovement * delta * 100 * difficultyMultiplier);
 
-func spawnFrom(from: Node2D) -> void:
+func spawnFrom(from: Node2D, multiplier: float) -> void:
+	difficultyMultiplier = multiplier;
 	parent = from;
 	parent.add_child(self);
 	global_position = from.global_position
@@ -34,8 +36,8 @@ func bindTo(from: Node2D) -> void:
 	var newPos = Vector2(Global.RNG.randi_range(int(from.global_position.x) - 20, int(from.global_position.x) + 5),\
 						(Global.RNG.randi_range(int(from.global_position.y) - 10, int(from.global_position.y) + 30)));
 	global_position = newPos;
-	tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR);
 	if self is Building:
+		tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR);
 		tween.tween_property(sprite, "scale", Vector2(0.25, 0.25), 0.25).set_trans(Tween.TRANS_LINEAR).from_current();
 	playCaptSound();
 
@@ -55,7 +57,7 @@ func failedCaptureAnimation() -> void:
 	tween.parallel().tween_property(sprite, "scale", Vector2(scaleValue, scaleValue), failedDuration).set_trans(Tween.TRANS_LINEAR).from_current();
 	playDeathSound();
 	await get_tree().create_timer(1).timeout;
-	free();
+	queue_free();
 	
 func playDeathSound() -> void:
 	if self is Building:
