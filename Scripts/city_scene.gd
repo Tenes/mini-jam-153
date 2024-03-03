@@ -9,13 +9,15 @@ extends Node
 @onready var final_score: Label = $EndScreen/HBoxContainer/VBoxContainer/FinalScore
 @onready var final_multiplier: Label = $EndScreen/HBoxContainer/VBoxContainer/FinalMultiplier
 @onready var hidden_multiplicator: Label = $EndScreen/HBoxContainer/VBoxContainer/HiddenMultiplicator
-@export var waveDownTimer: float = 2;
+@export var waveDownTimer: float = 1.5;
 var interactables : Array[Interactable] = [];
 var difficultyMultiplier:  = 1.0;
-const waveTimerSpawnRate : Array[float] = [0.8, 1, 1.25];
-const waveDifficulty : Array[float] = [0.75, 1.25, 3];
-const waveDuration: float = 10;
-var currentWaveDifficulty : float;
+const waveTimerSpawnRate : Array[float] = [0.9, 1, 1.5, 1.25];
+const waveDifficulty : Array[float] = [0.75, 1.25, 3, 2];
+const waveLength: Array[float] = [15, 10, 5, 8];
+var currentWave: int;
+var spawnedEnnemies: float;
+var currentWaveLength: float;
 
 func _ready() -> void:
 	Events.update_score.connect(updateDifficultyMultiplier);
@@ -32,12 +34,17 @@ func _ready() -> void:
 		tempAudioStream.finished.connect(tempAudioStream.queue_free);
 
 func updateDifficultyMultiplier(value: float):
+	updateRemainingWaveLength();
 	difficultyMultiplier += (value/10000);
 
 func interactableSpawner() -> void:
-	var tempInteractable = Global.INTERACTABLES.pick_random().instantiate();
-	tempInteractable.spawnFrom(interactableContainer, difficultyMultiplier, currentWaveDifficulty);
-	interactables.append(tempInteractable);
+	if spawnedEnnemies < waveLength[currentWave] :
+		var tempInteractable = Global.INTERACTABLES.pick_random().instantiate();
+		tempInteractable.spawnFrom(interactableContainer, difficultyMultiplier, waveDifficulty[currentWave]);
+		interactables.append(tempInteractable);
+		spawnedEnnemies += 1;
+	if spawnedEnnemies == waveLength[currentWave]:
+		spawnTimer.stop();
 
 func displayEndScreen(finalScore, bestMultiplier) -> void:
 	game_screen.queue_free();
@@ -50,8 +57,9 @@ func _on_main_menu_button_pressed() -> void:
 	get_tree().change_scene_to_file(Global.SCENES[2]);
 
 func setupWaveTimer() -> void:
-	if waveTimer.timeout.is_connected(setupWaveTimer):
-		waveTimer.timeout.disconnect(setupWaveTimer);
+	spawnedEnnemies = 0;
+	if waveTimer.timeout.is_connected(waveSpawner):
+		waveTimer.timeout.disconnect(waveSpawner);
 	spawnTimer.stop();
 	waveTimer.stop();
 	waveTimer.wait_time = waveDownTimer;
@@ -60,17 +68,15 @@ func setupWaveTimer() -> void:
 	waveTimer.one_shot = true;
 
 func waveSpawner() -> void:
-	var waveSelection = Global.RNG.randi_range(0, 2);
-	spawnTimer.wait_time = waveTimerSpawnRate[waveSelection];
+	currentWave = Global.RNG.randi_range(0, 3);
+	spawnTimer.wait_time = waveTimerSpawnRate[currentWave];
 	if spawnTimer.timeout.is_connected(interactableSpawner):
 		spawnTimer.timeout.disconnect(interactableSpawner);
 	spawnTimer.timeout.connect(interactableSpawner);
 	spawnTimer.start();
-	currentWaveDifficulty = waveDifficulty[waveSelection];
-	waveTimer.stop();
-	waveTimer.wait_time = waveDuration;
-	if waveTimer.timeout.is_connected(waveSpawner):
-		waveTimer.timeout.disconnect(waveSpawner);
-	waveTimer.timeout.connect(setupWaveTimer);
-	waveTimer.one_shot = true;
-	waveTimer.start();
+	currentWaveLength =  waveLength[currentWave];
+
+func updateRemainingWaveLength() -> void:
+	currentWaveLength -= 1;
+	if currentWaveLength == 0:
+		setupWaveTimer();
