@@ -431,10 +431,11 @@ libraries = {
 "": SubResource("AnimationLibrary_g0qg5")
 }
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="FishingRod" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 68.0
 offset_top = 287.0
 offset_right = 116.0
 offset_bottom = 335.0
+pivot_offset = Vector2(23, 28)
 texture = ExtResource("3_3tegu")

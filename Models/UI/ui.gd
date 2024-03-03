@@ -5,6 +5,8 @@ extends Control
 @onready var animation_player: AnimationPlayer = $MultiplerHolder/AnimationPlayer
 @onready var progress_bar_animation_player: AnimationPlayer = $MarginContainer/ProgressBarAnimationPlayer
 @onready var floating_score: Label = $FloatingTextContainer/FloatingScore
+@onready var fishing_rod = $FishingRod
+
 var tween: Tween;
 var score = 0;
 var scoreMultiplier = 1;
@@ -52,6 +54,9 @@ func updateMultiplier(isSuccess: bool) -> void:
 	score_multiplier.text = str(scoreMultiplier);
 
 func shakeProgressBar(status) -> void:
+	var tween = create_tween()
+	tween.tween_property(fishing_rod,"scale",Vector2(1.5,1.5),0.2)
+	tween.tween_property(fishing_rod,"scale",Vector2(1,1),0.2)
 	if status == Global.BarStatus.GREAT_SUCCESS:
 		progress_bar_animation_player.play("shake_great_success");
 	elif status == Global.BarStatus.SUCCESS:
