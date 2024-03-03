@@ -4,7 +4,8 @@ extends Node
 @onready var INTERACTABLES = [
 	preload("res://Models/Human/human.tscn"),
 	preload("res://Models/Building/building.tscn"),
-	preload("res://Models/Building/building_2.tscn")
+	preload("res://Models/Building/building_2.tscn"),
+	preload("res://Models/Car/car.tscn")
 ]
 @onready var SCENES = {
 	1: "res://Scenes/city_scene.tscn",
@@ -38,6 +39,14 @@ extends Node
 	preload("res://Assets/Sounds/building_capture_3.mp3"),
 	preload("res://Assets/Sounds/building_capture_2.mp3"),
 	preload("res://Assets/Sounds/building_capture_3.mp3"),
+]
+
+@onready var CAR_CAPT_SOUNDS = [
+	preload("res://Assets/Sounds/car_capture_2.mp3")
+]
+
+@onready var CAR_DEATH_SOUNDS = [
+	preload("res://Assets/Sounds/car_death_1.mp3")
 ]
 
 @onready var ALL_SOUNDS = [

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlldiev1nnnlb"]
+
+[ext_resource type="PackedScene" uid="uid://dw75lst4ci8fh" path="res://Models/Interactable/interactable.tscn" id="1_vl0kn"]
+[ext_resource type="Script" path="res://Models/Car/Car.gd" id="2_ocd7j"]
+[ext_resource type="Texture2D" uid="uid://e1dekasl1c1r" path="res://Assets/car_1.png" id="3_pgr1l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wlwb"]
+size = Vector2(24, 13.5)
+
+[node name="Car" instance=ExtResource("1_vl0kn")]
+script = ExtResource("2_ocd7j")
+startSuccess = 50
+lengthSuccess = 25
+
+[node name="Shape" parent="Hitbox" index="0"]
+shape = SubResource("RectangleShape2D_2wlwb")
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource("3_pgr1l")
+
+[node name="AudioStreamPlayer2D" parent="." index="2"]
+volume_db = -10.0

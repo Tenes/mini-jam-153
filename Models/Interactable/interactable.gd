@@ -67,6 +67,9 @@ func failedCaptureAnimation() -> void:
 func playDeathSound() -> void:
 	if self is Building:
 		audio_stream_player_2d.stream = Global.BUILDING_DEATH_SOUNDS.pick_random();
+	elif self is Car:
+		audio_stream_player_2d.stream = Global.CAR_DEATH_SOUNDS.pick_random();
+		audio_stream_player_2d.pitch_scale = Global.RNG.randf_range(0.9, 1.1);
 	else:
 		audio_stream_player_2d.stream = Global.HUMAN_DEATH_SOUNDS.pick_random();
 		secondary_sound_player_2d.stream = Global.BLOOD_SOUNDS.pick_random();
@@ -78,6 +81,9 @@ func playCaptSound() -> void:
 	if self is Building:
 		audio_stream_player_2d.stream = Global.BUILDING_CAPT_SOUNDS.pick_random();
 		audio_stream_player_2d.pitch_scale = Global.RNG.randf_range(0.8, 0.9);
+	elif self is Car:
+		audio_stream_player_2d.stream = Global.CAR_CAPT_SOUNDS.pick_random();
+		audio_stream_player_2d.pitch_scale = Global.RNG.randf_range(0.5, 0.7);
 	else:
 		audio_stream_player_2d.stream = Global.HUMAN_CAPT_SOUNDS.pick_random();
 		audio_stream_player_2d.pitch_scale = Global.RNG.randf_range(0.8, 1.3);

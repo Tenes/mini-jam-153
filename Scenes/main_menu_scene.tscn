@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://brawasoc7mri6"]
+[gd_scene load_steps=12 format=3 uid="uid://brawasoc7mri6"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu_scene.gd" id="1_vtil1"]
 [ext_resource type="PackedScene" uid="uid://de4oqte1nvre1" path="res://Models/Decor/parallax_container_node_2d.tscn" id="2_fwc7t"]
 [ext_resource type="Texture2D" uid="uid://b2tdaia8povr2" path="res://Assets/Extraterrestre_03.png" id="3_x7lqp"]
 [ext_resource type="AudioStream" uid="uid://yloqq8aqbjh8" path="res://Assets/Sounds/ship.mp3" id="4_1x1v6"]
 [ext_resource type="AudioStream" uid="uid://1s5jqifhd12o" path="res://Assets/Sounds/main-menu.mp3" id="5_ig8cl"]
+[ext_resource type="FontFile" uid="uid://faorrjyfwub1" path="res://Assets/Fonts/8-bit Arcade Out.ttf" id="6_c2h31"]
 
 [sub_resource type="Animation" id="Animation_sks6s"]
 resource_name = "wobbling_2"
@@ -64,6 +65,68 @@ _data = {
 "wobbling_2": SubResource("Animation_sks6s")
 }
 
+[sub_resource type="Animation" id="Animation_rapw0"]
+resource_name = "default"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.13, 1.13), Vector2(1, 1), Vector2(1.13, 1.13), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.139626, 0.221657]
+}
+
+[sub_resource type="Animation" id="Animation_tfhyr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.139626]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_go2p8"]
+_data = {
+"RESET": SubResource("Animation_tfhyr"),
+"default": SubResource("Animation_rapw0")
+}
+
 [node name="MainMenuScene" type="CanvasLayer"]
 script = ExtResource("1_vtil1")
 
@@ -111,14 +174,59 @@ libraries = {
 rotation = 0.464904
 scale = Vector2(1.14065, 1.14065)
 stream = ExtResource("4_1x1v6")
-volume_db = -6.78112
+volume_db = -5.0
 autoplay = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ig8cl")
+volume_db = -10.0
 autoplay = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -619.0
+offset_top = 35.0
+offset_right = -380.0
+offset_bottom = 114.0
+grow_horizontal = 0
+rotation = -0.139626
+pivot_offset = Vector2(111, 40)
+metadata/_edit_group_ = true
+
+[node name="Zorblug2" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.784314, 0.145098, 1)
+theme_override_font_sizes/font_size = 50
+text = "Zorblug "
+horizontal_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="Zorblug" type="Label" parent="VBoxContainer2/Zorblug2"]
+layout_mode = 2
+offset_right = 239.0
+offset_bottom = 31.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.537255, 0.117647, 0.168627, 1)
+theme_override_fonts/font = ExtResource("6_c2h31")
+theme_override_font_sizes/font_size = 50
+text = "Zorblug "
+horizontal_alignment = 1
+
+[node name="Fisherman" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "the fisherman-man"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer2"]
+libraries = {
+"": SubResource("AnimationLibrary_go2p8")
+}
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Credit" to="." method="_on_credit_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="ready" from="Extraterrestre02/AnimationPlayer" to="Extraterrestre02/AnimationPlayer" method="play" binds= ["wobbling_2"]]
+[connection signal="ready" from="VBoxContainer2/AnimationPlayer" to="VBoxContainer2/AnimationPlayer" method="play" binds= ["default"]]

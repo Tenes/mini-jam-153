@@ -87,8 +87,8 @@ wait_time = 2.0
 one_shot = true
 
 [node name="Extraterrestre02" type="Sprite2D" parent="GameScreen"]
-position = Vector2(252.828, 187.469)
-rotation = -0.187583
+position = Vector2(238.046, 194.013)
+rotation = -0.423767
 scale = Vector2(-1, 1)
 texture = ExtResource("6_pugq5")
 
@@ -179,7 +179,7 @@ pitch_scale = 0.76
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_gvsgq")
-volume_db = -5.0
+volume_db = -15.0
 autoplay = true
 
 [connection signal="ready" from="GameScreen/Extraterrestre02/AnimationPlayer" to="GameScreen/Extraterrestre02/AnimationPlayer" method="play" binds= ["wobbling"]]
