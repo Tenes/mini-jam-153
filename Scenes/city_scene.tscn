@@ -87,8 +87,8 @@ wait_time = 2.0
 one_shot = true
 
 [node name="Extraterrestre02" type="Sprite2D" parent="GameScreen"]
-position = Vector2(238.046, 194.013)
-rotation = -0.423767
+position = Vector2(246.885, 180.317)
+rotation = -0.131769
 scale = Vector2(-1, 1)
 texture = ExtResource("6_pugq5")
 

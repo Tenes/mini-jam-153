@@ -28,7 +28,7 @@ func _ready() -> void:
 	rope.linkToHarpoon(harpoon);
 	setupWaveTimer();
 #ADD SPOOF PARTICLES HERE TO LOAD THEM 
-	for n in 12 :
+	for n in 14 :
 		var tempAudioStream : AudioStreamPlayer = AudioStreamPlayer.new();
 		tempAudioStream.stream = Global.ALL_SOUNDS[n];
 		tempAudioStream.volume_db = -80;

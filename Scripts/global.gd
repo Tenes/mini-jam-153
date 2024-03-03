@@ -42,6 +42,7 @@ extends Node
 ]
 
 @onready var CAR_CAPT_SOUNDS = [
+	preload("res://Assets/Sounds/car_capture_3.mp3"),
 	preload("res://Assets/Sounds/car_capture_2.mp3")
 ]
 
@@ -63,6 +64,8 @@ extends Node
 	preload("res://Assets/Sounds/human_capture_3.mp3"),
 	preload("res://Assets/Sounds/building_capture_2.mp3"),
 	preload("res://Assets/Sounds/building_capture_3.mp3"),
+	preload("res://Assets/Sounds/car_capture_3.mp3"),
+	preload("res://Assets/Sounds/car_death_1.mp3")
 ]
 
 enum BarStatus {
