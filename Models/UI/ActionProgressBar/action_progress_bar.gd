@@ -5,7 +5,12 @@ var current_speed = 0
 var current_start_pourcentage = -1
 var current_pourcentage = -1
 @onready var area_container = $AreaContainer
+@onready var audio_stream_player = $AudioStreamPlayer
+@onready var great_success_particle = $VSeparator/GreatSuccessParticle
 
+const GREAT_SUCCESS_1 = preload("res://Assets/Sounds/great_success_1.mp3")
+const SUCCESS_1 = preload("res://Assets/Sounds/success_1.mp3")
+const FAILURE_1 = preload("res://Assets/Sounds/failure_1.mp3")
 func _ready():
 	Events.on_interactable_collided.connect(set_capture_area)
 	Events.reset_bar.connect(reset)
@@ -47,14 +52,27 @@ func _unhandled_input(_event):
 			var great_value = current_start_pourcentage+current_pourcentage*0.5
 			clear_capture_area()
 			if value >= great_value - current_pourcentage / great_success_divider /2.0 and  value <= great_value + current_pourcentage / great_success_divider /2.0:
+				spawn_great_success_particle()
 				reset()
+				audio_stream_player.stream = GREAT_SUCCESS_1
 				Events.bar_clicked.emit(Global.BarStatus.GREAT_SUCCESS)
 			else :
+				audio_stream_player.stream = SUCCESS_1
 				reset()
 				Events.bar_clicked.emit(Global.BarStatus.SUCCESS)
 		else:
+			audio_stream_player.stream = FAILURE_1
 			Events.bar_clicked.emit(Global.BarStatus.FAILED)
+		audio_stream_player.play()
 
 func reset(speed = 0):
 	value = 0
 	current_speed = speed
+
+func spawn_great_success_particle():
+	var instance = great_success_particle.duplicate(DUPLICATE_USE_INSTANTIATION)
+	add_child(instance)
+	instance.global_position = great_success_particle.global_position
+	instance.finished.connect(func():instance.queue_free())
+	instance.emitting = true
+	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://8j55homb7oys"]
+[gd_scene load_steps=10 format=3 uid="uid://8j55homb7oys"]
 
 [ext_resource type="Script" path="res://Models/UI/ActionProgressBar/action_progress_bar.gd" id="1_ku4cg"]
 
@@ -17,19 +17,41 @@ grow_begin = 3.0
 grow_end = 3.0
 thickness = 41
 
+[sub_resource type="Gradient" id="Gradient_6o514"]
+colors = PackedColorArray(0.991164, 0.991164, 0.991164, 1, 0.941676, 0.681647, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_71xky"]
+gradient = SubResource("Gradient_6o514")
+
+[sub_resource type="Curve" id="Curve_vsq34"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.86227, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6xvxf"]
+curve = SubResource("Curve_vsq34")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d6afn"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 15, 0)
+emission_shape = 3
+emission_box_extents = Vector3(5, 25, 1)
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_6xvxf")
+color_ramp = SubResource("GradientTexture1D_71xky")
+
 [node name="ActionProgressBar" type="ProgressBar"]
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 14
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -0.5
-offset_top = -20.5
-offset_right = 0.5
-offset_bottom = 20.5
+offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_k05wr")
@@ -54,3 +76,16 @@ offset_right = 6.0
 offset_bottom = 40.0
 mouse_filter = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_xp6ne")
+
+[node name="GreatSuccessParticle" type="GPUParticles2D" parent="VSeparator"]
+position = Vector2(3, 0)
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_d6afn")
+lifetime = 1.5
+one_shot = true
+speed_scale = 2.2
+explosiveness = 1.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
