@@ -39,6 +39,22 @@ extends Node
 	preload("res://Assets/Sounds/building_capture_3.mp3"),
 ]
 
+@onready var ALL_SOUNDS = [
+	preload("res://Assets/Sounds/human_death.mp3"),
+	preload("res://Assets/Sounds/human_death_2.mp3"),
+	preload("res://Assets/Sounds/human_death_3.mp3"),
+	preload("res://Assets/Sounds/blood_explosion_1.mp3"),
+	preload("res://Assets/Sounds/blood_explosion_2.mp3"),
+	preload("res://Assets/Sounds/building_death.mp3"),
+	preload("res://Assets/Sounds/building_death_2.mp3"),
+	preload("res://Assets/Sounds/building_death_3.mp3"),
+	preload("res://Assets/Sounds/human_capture.mp3"),
+	preload("res://Assets/Sounds/human_capture_2.mp3"),
+	preload("res://Assets/Sounds/human_capture_3.mp3"),
+	preload("res://Assets/Sounds/building_capture_2.mp3"),
+	preload("res://Assets/Sounds/building_capture_3.mp3"),
+]
+
 enum BarStatus {
 	DEFAULT = 0,
 	SUCCESS = 1,
