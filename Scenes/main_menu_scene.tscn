@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://brawasoc7mri6"]
+[gd_scene load_steps=14 format=3 uid="uid://brawasoc7mri6"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu_scene.gd" id="1_vtil1"]
 [ext_resource type="PackedScene" uid="uid://de4oqte1nvre1" path="res://Models/Decor/parallax_container_node_2d.tscn" id="2_fwc7t"]
@@ -64,6 +64,12 @@ tracks/3/keys = {
 _data = {
 "wobbling_2": SubResource("Animation_sks6s")
 }
+
+[sub_resource type="FontVariation" id="FontVariation_7kkkp"]
+
+[sub_resource type="FontVariation" id="FontVariation_wy5jw"]
+fallbacks = Array[Font]([SubResource("FontVariation_7kkkp")])
+base_font = ExtResource("6_c2h31")
 
 [sub_resource type="Animation" id="Animation_tfhyr"]
 length = 0.001
@@ -209,7 +215,7 @@ offset_right = 239.0
 offset_bottom = 31.0
 grow_horizontal = 0
 theme_override_colors/font_color = Color(0.537255, 0.117647, 0.168627, 1)
-theme_override_fonts/font = ExtResource("6_c2h31")
+theme_override_fonts/font = SubResource("FontVariation_wy5jw")
 theme_override_font_sizes/font_size = 50
 text = "Zorblug "
 horizontal_alignment = 1

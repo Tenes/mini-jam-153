@@ -30,7 +30,7 @@ window/canvas_textures/default_texture_filter=0
 
 [gui]
 
-theme/custom_font="res://Assets/Fonts/8-bit Arcade In.ttf"
+theme/custom="res://Theme/main_theme.tres"
 
 [input]
 
