@@ -67,6 +67,7 @@ func _unhandled_input(_event):
 
 func reset(speed = 0):
 	value = 0
+	current_pourcentage = -1
 	current_speed = speed
 
 func spawn_great_success_particle():

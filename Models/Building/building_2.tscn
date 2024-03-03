@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://d3y1fcp46ao6c" path="res://Models/Building/building.tscn" id="1_hkqia"]
 [ext_resource type="PackedScene" uid="uid://bga0jmmjnm1f3" path="res://Models/Particles/capture_particles_explosion01.tscn" id="2_ux4f7"]
 [ext_resource type="PackedScene" uid="uid://bsxu8ugs0g6ob" path="res://Models/Particles/capture_particles.tscn" id="3_qbxao"]
-[ext_resource type="Texture2D" uid="uid://cx372w7356v1x" path="res://Assets/Buildings/Building_03.png" id="4_rr8ew"]
+[ext_resource type="Texture2D" uid="uid://b5sd0uko07uv5" path="res://Assets/Buildings/Building_04.png" id="4_1rn8x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fe38"]
-size = Vector2(95, 127)
+size = Vector2(88, 78)
 
 [node name="Interactable" instance=ExtResource("1_hkqia")]
 startSuccess = 75
@@ -15,9 +15,9 @@ capture_particles = Array[PackedScene]([ExtResource("2_ux4f7"), ExtResource("3_q
 scoreValue = 65
 
 [node name="Shape" parent="Hitbox" index="0"]
-position = Vector2(11.5, 0.5)
+position = Vector2(0, 25)
 shape = SubResource("RectangleShape2D_8fe38")
 
 [node name="Sprite" parent="." index="1"]
-position = Vector2(4, -10)
-texture = ExtResource("4_rr8ew")
+position = Vector2(1, 20)
+texture = ExtResource("4_1rn8x")

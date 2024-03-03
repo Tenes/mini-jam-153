@@ -9,12 +9,14 @@ extends Node
 @onready var final_score: Label = $EndScreen/HBoxContainer/VBoxContainer/FinalScore
 @onready var final_multiplier: Label = $EndScreen/HBoxContainer/VBoxContainer/FinalMultiplier
 @onready var hidden_multiplicator: Label = $EndScreen/HBoxContainer/VBoxContainer/HiddenMultiplicator
-@export var waveDownTimer: float = 1.5;
+@export var waveDownTimer: float = 1;
+@onready var warning_panel = $WarningPanel
+
 var interactables : Array[Interactable] = [];
 var difficultyMultiplier:  = 1.0;
 const waveTimerSpawnRate : Array[float] = [0.9, 1, 1, 1.5, 1.25];
-const waveDifficulty : Array[float] = 	[0.75, 1, 1.25, 2.25, 1.75];
-const waveLength: Array[float] = [15, 10, 10, 5, 8];
+const waveDifficulty : Array[float] = [0.75, 1, 1.25, 2.25, 1.75];
+const waveLength: Array[float] = [30, 20, 15, 5, 12];
 var currentWave: int;
 var spawnedEnnemies: float;
 var currentWaveLength: float;
@@ -75,6 +77,12 @@ func waveSpawner() -> void:
 	spawnTimer.timeout.connect(interactableSpawner);
 	spawnTimer.start();
 	currentWaveLength =  waveLength[currentWave];
+	show_warning()
+
+func show_warning():
+	warning_panel.visible = true
+	await get_tree().create_timer(3.0).timeout;
+	warning_panel.visible = false
 
 func updateRemainingWaveLength() -> void:
 	currentWaveLength -= 1;
