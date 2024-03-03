@@ -278,6 +278,7 @@ offset_right = -69.0
 offset_bottom = -40.0
 grow_horizontal = 0
 grow_vertical = 0
+scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(26, 16)
 
 [node name="FloatingScore" type="Label" parent="FloatingTextContainer"]

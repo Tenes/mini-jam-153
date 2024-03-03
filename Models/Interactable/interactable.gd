@@ -75,12 +75,11 @@ func playCaptSound() -> void:
 		audio_stream_player_2d.stream = Global.BUILDING_CAPT_SOUNDS[Global.RNG.randi_range(1, 3)];
 		audio_stream_player_2d.pitch_scale = Global.RNG.randf_range(0.8, 0.9);
 	else:
-		secondary_sound_player_2d.stream = Global.HUMAN_CAPT_SOUNDS[Global.RNG.randi_range(1, 3)];
+		audio_stream_player_2d.stream = Global.HUMAN_CAPT_SOUNDS[Global.RNG.randi_range(1, 3)];
 		audio_stream_player_2d.pitch_scale = Global.RNG.randf_range(0.8, 1.3);
 	audio_stream_player_2d.play();
 	await audio_stream_player_2d.finished
 	audio_stream_player_2d.queue_free()
-	secondary_sound_player_2d.queue_free()
 
 func instantiate_particles(particle_list,offset = Vector2.ZERO, pparent = self) -> void:
 	if particle_list == null:
