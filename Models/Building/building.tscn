@@ -1,14 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3y1fcp46ao6c"]
+[gd_scene load_steps=6 format=3 uid="uid://d3y1fcp46ao6c"]
 
-[ext_resource type="Texture2D" uid="uid://cvwjtuuxfejff" path="res://Assets/Building_01.png" id="1_617hb"]
 [ext_resource type="PackedScene" uid="uid://dw75lst4ci8fh" path="res://Models/Interactable/interactable.tscn" id="1_r7swu"]
 [ext_resource type="Script" path="res://Models/Building/building.gd" id="2_sftir"]
+[ext_resource type="Texture2D" uid="uid://cjnk3xmhumrop" path="res://Assets/Buildings/Building_01.png" id="3_bc3yv"]
+[ext_resource type="PackedScene" uid="uid://d334mdfiimijb" path="res://Models/Particles/brutal_particle_2d.tscn" id="3_kxijq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_46yyn"]
-size = Vector2(47, 127)
+size = Vector2(71, 127)
 
 [node name="Interactable" instance=ExtResource("1_r7swu")]
 script = ExtResource("2_sftir")
+startSuccess = 70
+lengthSuccess = 30
+destruction_particles = Array[PackedScene]([ExtResource("3_kxijq")])
+scoreValue = 50
 
 [node name="Hitbox" parent="." index="0"]
 position = Vector2(0, -64)
@@ -18,6 +23,6 @@ position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_46yyn")
 
 [node name="Sprite" parent="." index="1"]
-position = Vector2(1, 0)
-texture = ExtResource("1_617hb")
+position = Vector2(1, -14)
+texture = ExtResource("3_bc3yv")
 offset = Vector2(-1, -64)

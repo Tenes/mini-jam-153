@@ -35,7 +35,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6y04s"]
-size = Vector2(321, 63)
+size = Vector2(363, 63)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_imkgk"]
 size = Vector2(60, 63)
@@ -58,7 +58,7 @@ rotation = 0.00396234
 [node name="SpriteFront" type="AnimatedSprite2D" parent="."]
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_3brs0")
-frame_progress = 0.826015
+frame_progress = 0.648792
 speed_scale = 0.5
 
 [node name="SpriteBack" type="Sprite2D" parent="SpriteFront"]
@@ -68,8 +68,9 @@ texture = ExtResource("3_mora5")
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="Shape" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-129.5, -0.5)
+position = Vector2(-150, -0.5)
 shape = SubResource("RectangleShape2D_6y04s")
+debug_color = Color(0.572549, 0.545098, 0.305882, 0.419608)
 
 [node name="Scanbox" type="Area2D" parent="."]
 collision_layer = 2

@@ -35,7 +35,7 @@ func updateDifficultyMultiplier(value: float):
 	difficultyMultiplier += (value/10000);
 
 func interactableSpawner() -> void:
-	var tempInteractable = Global.INTERACTABLES[Global.RNG.randi_range(1, 2)].instantiate();
+	var tempInteractable = Global.INTERACTABLES.pick_random().instantiate();
 	tempInteractable.spawnFrom(interactableContainer, difficultyMultiplier, currentWaveDifficulty);
 	interactables.append(tempInteractable);
 

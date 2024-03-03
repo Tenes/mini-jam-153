@@ -1,13 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://dw75lst4ci8fh"]
+[gd_scene load_steps=7 format=3 uid="uid://dw75lst4ci8fh"]
 
 [ext_resource type="Script" path="res://Models/Interactable/interactable.gd" id="1_ju4d7"]
+[ext_resource type="PackedScene" uid="uid://bsxu8ugs0g6ob" path="res://Models/Particles/capture_particles.tscn" id="2_6vfw5"]
 [ext_resource type="AudioStream" uid="uid://dkvnlxcbpwtxm" path="res://Assets/Sounds/human_death.mp3" id="2_okfs3"]
+[ext_resource type="PackedScene" uid="uid://bga0jmmjnm1f3" path="res://Models/Particles/capture_particles_explosion01.tscn" id="3_mmc06"]
+[ext_resource type="PackedScene" uid="uid://cf6iwnp41gx5k" path="res://Models/Particles/blood_particle_2d.tscn" id="4_egdft"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_spf4m"]
 size = Vector2(8, 13.5)
 
 [node name="Interactable" type="Node2D"]
 script = ExtResource("1_ju4d7")
+capture_particles = Array[PackedScene]([ExtResource("2_6vfw5"), ExtResource("3_mmc06")])
+destruction_particles = Array[PackedScene]([ExtResource("4_egdft")])
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(0, -6)

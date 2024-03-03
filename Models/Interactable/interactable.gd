@@ -17,7 +17,7 @@ const scales : Array[float] = [0.25, 0.5, 2, 3];
 var moovement: int = 1;
 var moovementModifier : float = 1;
 var tween: Tween;
-var scoreValue: int = 0;
+@export var scoreValue: int = 0;
 var parent: Node2D;
 var difficultyMultiplier: float = 1.0
 
