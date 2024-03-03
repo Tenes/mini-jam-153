@@ -33,7 +33,7 @@ func updateScore(value: int) -> void:
 		floating_score.text = "+%s"%(value * scoreMultiplier);
 		tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR);
 		var textContainer = floating_score.get_parent();
-		tween.tween_property(textContainer, "scale", Vector2(2, 2), 0.2).set_ease(Tween.EASE_OUT).from_current();
+		tween.tween_property(textContainer, "scale", Vector2(1.5, 1.5), 0.2).set_ease(Tween.EASE_OUT).from_current();
 		await tween.finished;
 		tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR);
 		tween.tween_property(textContainer, "scale", Vector2(0, 0), 0.4).set_ease(Tween.EASE_OUT).from_current();

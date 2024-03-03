@@ -35,7 +35,7 @@ func displayEndScreen(finalScore, bestMultiplier) -> void:
 	end_screen.show();
 	final_score.text = str(finalScore);
 	final_multiplier.text = final_multiplier.text%bestMultiplier;
-	hidden_multiplicator.text = hidden_multiplicator.text%difficultyMultiplier;
+	hidden_multiplicator.text = hidden_multiplicator.text%str(snapped(difficultyMultiplier, 0.001));
 
 func _on_main_menu_button_pressed() -> void:
 	get_tree().change_scene_to_file(Global.SCENES[2]);
