@@ -56,3 +56,5 @@ func shakeProgressBar(status) -> void:
 		progress_bar_animation_player.play("shake_great_success");
 	elif status == Global.BarStatus.SUCCESS:
 		progress_bar_animation_player.play("shake_success");
+	else:
+		progress_bar_animation_player.play("shake_failed");

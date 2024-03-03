@@ -91,9 +91,9 @@ text = "Exit
 "
 
 [node name="Extraterrestre02" type="Sprite2D" parent="."]
-position = Vector2(295.189, 143.84)
-rotation = -0.0567602
-scale = Vector2(0.380756, 0.380756)
+position = Vector2(257.862, 192.87)
+rotation = -0.0369702
+scale = Vector2(-2.29756, 2.39002)
 texture = ExtResource("3_mesbx")
 
 [node name="Marker2D" type="Marker2D" parent="Extraterrestre02"]
@@ -110,7 +110,7 @@ libraries = {
 rotation = 0.464904
 scale = Vector2(1.14065, 1.14065)
 stream = ExtResource("4_1x1v6")
-volume_db = -7.32704
+volume_db = -3.50522
 autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]

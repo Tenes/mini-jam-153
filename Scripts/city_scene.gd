@@ -18,6 +18,7 @@ func _ready() -> void:
 	rope.linkToHarpoon(harpoon);
 	interactableSpawner();
 	timer.start();
+#ADD SPOOF PARTICLES HERE TO LOAD THEM 
 	for n in 12 :
 		var tempAudioStream : AudioStreamPlayer = AudioStreamPlayer.new();
 		tempAudioStream.stream = Global.ALL_SOUNDS[n];
