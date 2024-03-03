@@ -13,7 +13,7 @@ extends Node
 var interactables : Array[Interactable] = [];
 var difficultyMultiplier:  = 1.0;
 const waveTimerSpawnRate : Array[float] = [0.9, 1, 1, 1.5, 1.25];
-const waveDifficulty : Array[float] = [0.75, 1, 1.25, 2.25, 1.75];
+const waveDifficulty : Array[float] = 	[0.75, 1, 1.25, 2.25, 1.75];
 const waveLength: Array[float] = [15, 10, 10, 5, 8];
 var currentWave: int;
 var spawnedEnnemies: float;
@@ -22,6 +22,7 @@ var currentWaveLength: float;
 func _ready() -> void:
 	Events.update_score.connect(updateDifficultyMultiplier);
 	Events.player_death.connect(displayEndScreen);
+	Events.touched_prey.connect(updateRemainingWaveLength);
 	rope.linkToHarpoon(harpoon);
 	setupWaveTimer();
 #ADD SPOOF PARTICLES HERE TO LOAD THEM 
@@ -34,7 +35,6 @@ func _ready() -> void:
 		tempAudioStream.finished.connect(tempAudioStream.queue_free);
 
 func updateDifficultyMultiplier(value: float):
-	updateRemainingWaveLength();
 	difficultyMultiplier += (value/10000);
 
 func interactableSpawner() -> void:

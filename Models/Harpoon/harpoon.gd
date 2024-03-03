@@ -61,10 +61,12 @@ func _on_scanbox_area_entered(area: Area2D) -> void:
 		Events.reset_bar.emit();
 		Events.update_durability.emit(-1);
 		Events.update_multiplier.emit(false);
+		Events.touched_prey.emit();
 		refreshBar();
 	if interactable in self.capturedInteractables:
 		var capturedInteractable = self.capturedInteractables.pop_front()
 		Events.update_score.emit(capturedInteractable.scoreValue);
+		Events.touched_prey.emit();
 		capturedInteractable.bindTo(self);
 	returnToOriginalPosition();
 
