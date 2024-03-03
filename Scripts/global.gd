@@ -17,6 +17,11 @@ extends Node
 	3: preload("res://Assets/Sounds/human_death_3.mp3"),
 }
 
+@onready var BLOOD_SOUNDS = [
+	preload("res://Assets/Sounds/blood_explosion_1.mp3"),
+	preload("res://Assets/Sounds/blood_explosion_2.mp3")
+]
+
 @onready var BUILDING_DEATH_SOUNDS = {
 	1: preload("res://Assets/Sounds/building_death.mp3"),
 	2: preload("res://Assets/Sounds/building_death_2.mp3"),

@@ -6,6 +6,7 @@ class_name Interactable
 @export var lengthSuccess: int = 10;
 @onready var sprite: Sprite2D = $Sprite
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var secondary_sound_player_2d = $SecondarySoundPlayer2D
 @export var capture_particles : Array[PackedScene]
 @export var destruction_particles : Array[PackedScene]
 
@@ -64,17 +65,22 @@ func playDeathSound() -> void:
 		audio_stream_player_2d.stream = Global.BUILDING_DEATH_SOUNDS[Global.RNG.randi_range(1, 3)];
 	else:
 		audio_stream_player_2d.stream = Global.HUMAN_DEATH_SOUNDS[Global.RNG.randi_range(1, 3)];
+		secondary_sound_player_2d.stream = Global.BLOOD_SOUNDS[Global.RNG.randi_range(0,Global.BLOOD_SOUNDS.size()-1)];
 	audio_stream_player_2d.pitch_scale = Global.RNG.randf_range(0.8, 1.3);
 	audio_stream_player_2d.play();
+	secondary_sound_player_2d.play()
 
 func playCaptSound() -> void:
 	if self is Building:
 		audio_stream_player_2d.stream = Global.BUILDING_CAPT_SOUNDS[Global.RNG.randi_range(1, 3)];
 		audio_stream_player_2d.pitch_scale = Global.RNG.randf_range(0.8, 0.9);
 	else:
-		audio_stream_player_2d.stream = Global.HUMAN_CAPT_SOUNDS[Global.RNG.randi_range(1, 3)];
+		secondary_sound_player_2d.stream = Global.HUMAN_CAPT_SOUNDS[Global.RNG.randi_range(1, 3)];
 		audio_stream_player_2d.pitch_scale = Global.RNG.randf_range(0.8, 1.3);
 	audio_stream_player_2d.play();
+	await audio_stream_player_2d.finished
+	audio_stream_player_2d.queue_free()
+	secondary_sound_player_2d.queue_free()
 
 func instantiate_particles(particle_list,offset = Vector2.ZERO, pparent = self) -> void:
 	if particle_list == null:
