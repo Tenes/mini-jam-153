@@ -165,9 +165,9 @@ text = "Exit
 "
 
 [node name="Extraterrestre02" type="Sprite2D" parent="."]
-position = Vector2(301.279, 192.497)
-rotation = -0.0587692
-scale = Vector2(-3.50467, 3.64498)
+position = Vector2(720.773, 136.559)
+rotation = -0.161658
+scale = Vector2(-3.71919, 4.25013)
 texture = ExtResource("3_x7lqp")
 
 [node name="Marker2D" type="Marker2D" parent="Extraterrestre02"]
@@ -184,7 +184,7 @@ libraries = {
 rotation = 0.464904
 scale = Vector2(1.14065, 1.14065)
 stream = ExtResource("4_1x1v6")
-volume_db = -1.81979
+volume_db = -1.54502
 autoplay = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -237,6 +237,34 @@ horizontal_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_go2p8")
 }
+
+[node name="Container" type="PanelContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 268.0
+offset_top = -102.0
+offset_right = 550.0
+offset_bottom = -2.0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Container/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "How to play"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label2" type="Label" parent="Container/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Press Left click
+or Spacebar
+in the Green Zones"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Credit" to="." method="_on_credit_pressed"]
