@@ -15,15 +15,17 @@ const direction : Array[int] = [-1, 1];
 const scales : Array[float] = [0.25, 0.5, 2, 3];
 
 var moovement: int = 1;
+var moovementModifier : float = 1;
 var tween: Tween;
 var scoreValue: int = 0;
 var parent: Node2D;
 var difficultyMultiplier: float = 1.0
 
 func _process(delta: float) -> void:
-	global_position.x += (moovement * delta * 100 * difficultyMultiplier);
+	global_position.x += (moovement * moovementModifier * delta * 100 * difficultyMultiplier);
 
-func spawnFrom(from: Node2D, multiplier: float) -> void:
+func spawnFrom(from: Node2D, multiplier: float, movementModifier: float) -> void:
+	moovementModifier = movementModifier;
 	difficultyMultiplier = multiplier;
 	parent = from;
 	parent.add_child(self);

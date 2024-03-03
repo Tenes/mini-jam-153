@@ -73,11 +73,15 @@ zoom = Vector2(1.5, 1.5)
 [node name="ParallaxContainerNode2D" parent="GameScreen" instance=ExtResource("5_1sjta")]
 position = Vector2(0, -24)
 
-[node name="Timer" type="Timer" parent="GameScreen"]
+[node name="SpawnTimer" type="Timer" parent="GameScreen"]
+
+[node name="WaveTimer" type="Timer" parent="GameScreen"]
+wait_time = 2.0
+one_shot = true
 
 [node name="Extraterrestre02" type="Sprite2D" parent="GameScreen"]
-position = Vector2(238.135, 187.223)
-rotation = -0.321879
+position = Vector2(251.784, 178.349)
+rotation = -0.0252392
 scale = Vector2(-1, 1)
 texture = ExtResource("6_yb2po")
 
@@ -155,6 +159,5 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Main menu"
 
-[connection signal="timeout" from="GameScreen/Timer" to="." method="_on_timer_timeout"]
 [connection signal="ready" from="GameScreen/Extraterrestre02/AnimationPlayer" to="GameScreen/Extraterrestre02/AnimationPlayer" method="play" binds= ["wobbling"]]
 [connection signal="pressed" from="EndScreen/HBoxContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
