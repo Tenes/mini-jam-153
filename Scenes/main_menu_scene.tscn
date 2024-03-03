@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://brawasoc7mri6"]
+[gd_scene load_steps=17 format=3 uid="uid://brawasoc7mri6"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu_scene.gd" id="1_vtil1"]
 [ext_resource type="PackedScene" uid="uid://de4oqte1nvre1" path="res://Models/Decor/parallax_container_node_2d.tscn" id="2_fwc7t"]
@@ -137,6 +137,13 @@ _data = {
 "default": SubResource("Animation_rapw0")
 }
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ud0sy"]
+content_margin_top = 13.0
+color = Color(1, 1, 1, 1)
+grow_begin = -50.0
+grow_end = -50.0
+thickness = 2
+
 [node name="MainMenuScene" type="CanvasLayer"]
 script = ExtResource("1_vtil1")
 
@@ -165,9 +172,9 @@ text = "Exit
 "
 
 [node name="Extraterrestre02" type="Sprite2D" parent="."]
-position = Vector2(720.773, 136.559)
-rotation = -0.161658
-scale = Vector2(-3.71919, 4.25013)
+position = Vector2(710.527, 138.108)
+rotation = -0.159018
+scale = Vector2(-3.75542, 4.27508)
 texture = ExtResource("3_x7lqp")
 
 [node name="Marker2D" type="Marker2D" parent="Extraterrestre02"]
@@ -184,7 +191,7 @@ libraries = {
 rotation = 0.464904
 scale = Vector2(1.14065, 1.14065)
 stream = ExtResource("4_1x1v6")
-volume_db = -1.54502
+volume_db = -1.46337
 autoplay = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -243,7 +250,7 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 268.0
-offset_top = -102.0
+offset_top = -108.0
 offset_right = 550.0
 offset_bottom = -2.0
 grow_vertical = 0
@@ -257,6 +264,10 @@ theme_override_font_sizes/font_size = 24
 text = "How to play"
 horizontal_alignment = 1
 uppercase = true
+
+[node name="VSplitContainer" type="HSeparator" parent="Container/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_ud0sy")
 
 [node name="Label2" type="Label" parent="Container/HBoxContainer"]
 layout_mode = 2
