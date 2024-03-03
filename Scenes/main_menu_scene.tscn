@@ -165,9 +165,9 @@ text = "Exit
 "
 
 [node name="Extraterrestre02" type="Sprite2D" parent="."]
-position = Vector2(903.733, 60.3536)
-rotation = -0.481364
-scale = Vector2(0.91127, 0.91127)
+position = Vector2(301.279, 192.497)
+rotation = -0.0587692
+scale = Vector2(-3.50467, 3.64498)
 texture = ExtResource("3_x7lqp")
 
 [node name="Marker2D" type="Marker2D" parent="Extraterrestre02"]
@@ -184,7 +184,7 @@ libraries = {
 rotation = 0.464904
 scale = Vector2(1.14065, 1.14065)
 stream = ExtResource("4_1x1v6")
-volume_db = -5.29576
+volume_db = -1.81979
 autoplay = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

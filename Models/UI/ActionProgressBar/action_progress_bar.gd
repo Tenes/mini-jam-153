@@ -46,8 +46,8 @@ func clear_capture_area():
 	for child in area_container.get_children():
 		child.queue_free()
 
-func _unhandled_input(_event):
-	if Input.is_action_just_pressed("left_click") and current_pourcentage > -1:
+func _unhandled_input(event):
+	if event.is_action_pressed("left_click") and current_pourcentage > -1:
 		if value >= current_start_pourcentage and value <= current_start_pourcentage+current_pourcentage:
 			var great_value = current_start_pourcentage+current_pourcentage*0.5
 			clear_capture_area()
