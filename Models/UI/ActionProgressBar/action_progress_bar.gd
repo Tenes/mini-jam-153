@@ -50,7 +50,6 @@ func _unhandled_input(event):
 	if event.is_action_pressed("left_click") and current_pourcentage > -1:
 		if value >= current_start_pourcentage and value <= current_start_pourcentage+current_pourcentage:
 			var great_value = current_start_pourcentage+current_pourcentage*0.5
-			clear_capture_area()
 			if value >= great_value - current_pourcentage / great_success_divider /2.0 and  value <= great_value + current_pourcentage / great_success_divider /2.0:
 				spawn_great_success_particle()
 				reset()
@@ -66,6 +65,7 @@ func _unhandled_input(event):
 		audio_stream_player.play()
 
 func reset(speed = 0):
+	clear_capture_area();
 	value = 0
 	current_pourcentage = -1
 	current_speed = speed
