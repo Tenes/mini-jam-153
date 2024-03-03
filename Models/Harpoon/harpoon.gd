@@ -40,14 +40,14 @@ func _on_hitbox_area_entered(area: Area2D):
 
 func playReelingAnimation() -> void:
 	isReeling = true;
-	sprite_front.speed_scale = 1.5
+	sprite_front.speed_scale = 1.3
 	tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR);
 	tween.tween_property(self, "global_position", Vector2(global_position.x - 350, global_position.y), 0.35).from_current();
-	tween.tween_callback(func():sprite_front.speed_scale = 0.5)
 
 func returnToOriginalPosition() -> void:
 	if tween and tween.is_running():
 		tween.kill();
+	sprite_front.speed_scale = 0.7
 	tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR);
 	tween.tween_property(self, "global_position", Vector2(originalPosition.x, originalPosition.y), 0.2).from_current();
 	isReeling = false;

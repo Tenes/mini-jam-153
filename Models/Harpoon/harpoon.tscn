@@ -31,7 +31,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6y04s"]
@@ -58,8 +58,8 @@ rotation = 0.00396234
 [node name="SpriteFront" type="AnimatedSprite2D" parent="."]
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_3brs0")
-frame_progress = 0.0505569
-speed_scale = 0.5
+frame_progress = 0.411606
+speed_scale = 0.7
 
 [node name="SpriteBack" type="Sprite2D" parent="SpriteFront"]
 z_as_relative = false
