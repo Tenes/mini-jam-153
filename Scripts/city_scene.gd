@@ -18,6 +18,13 @@ func _ready() -> void:
 	rope.linkToHarpoon(harpoon);
 	interactableSpawner();
 	timer.start();
+	for n in 12 :
+		var tempAudioStream : AudioStreamPlayer = AudioStreamPlayer.new();
+		tempAudioStream.stream = Global.ALL_SOUNDS[n];
+		tempAudioStream.volume_db = -80;
+		add_child(tempAudioStream);
+		tempAudioStream.play();
+		tempAudioStream.finished.connect(tempAudioStream.queue_free);
 
 func updateDifficultyMultiplier(value: float):
 	difficultyMultiplier += (value/10000);
