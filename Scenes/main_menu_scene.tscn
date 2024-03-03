@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://brawasoc7mri6"]
+[gd_scene load_steps=16 format=3 uid="uid://brawasoc7mri6"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu_scene.gd" id="1_vtil1"]
 [ext_resource type="PackedScene" uid="uid://de4oqte1nvre1" path="res://Models/Decor/parallax_container_node_2d.tscn" id="2_fwc7t"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://yloqq8aqbjh8" path="res://Assets/Sounds/ship.mp3" id="4_1x1v6"]
 [ext_resource type="AudioStream" uid="uid://1s5jqifhd12o" path="res://Assets/Sounds/main-menu.mp3" id="5_ig8cl"]
 [ext_resource type="FontFile" uid="uid://faorrjyfwub1" path="res://Assets/Fonts/8-bit Arcade Out.ttf" id="6_c2h31"]
+[ext_resource type="FontFile" uid="uid://b8ieuyc5r6p0h" path="res://Assets/Fonts/8-bit Arcade In.ttf" id="6_vw6ym"]
 
 [sub_resource type="Animation" id="Animation_sks6s"]
 resource_name = "wobbling_2"
@@ -64,6 +65,9 @@ tracks/3/keys = {
 _data = {
 "wobbling_2": SubResource("Animation_sks6s")
 }
+
+[sub_resource type="FontVariation" id="FontVariation_b6ob6"]
+base_font = ExtResource("6_vw6ym")
 
 [sub_resource type="FontVariation" id="FontVariation_7kkkp"]
 
@@ -161,9 +165,9 @@ text = "Exit
 "
 
 [node name="Extraterrestre02" type="Sprite2D" parent="."]
-position = Vector2(401.049, 91.6127)
-rotation = -0.213658
-scale = Vector2(0.348863, 0.348863)
+position = Vector2(903.733, 60.3536)
+rotation = -0.481364
+scale = Vector2(0.91127, 0.91127)
 texture = ExtResource("3_x7lqp")
 
 [node name="Marker2D" type="Marker2D" parent="Extraterrestre02"]
@@ -180,7 +184,7 @@ libraries = {
 rotation = 0.464904
 scale = Vector2(1.14065, 1.14065)
 stream = ExtResource("4_1x1v6")
-volume_db = -7.17046
+volume_db = -5.29576
 autoplay = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -192,38 +196,41 @@ autoplay = true
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -619.0
-offset_top = 35.0
-offset_right = -380.0
-offset_bottom = 114.0
+offset_left = -620.148
+offset_top = 19.451
+offset_right = -265.148
+offset_bottom = 98.451
 grow_horizontal = 0
 rotation = -0.139626
-pivot_offset = Vector2(111, 40)
+pivot_offset = Vector2(162.419, 44.5171)
 metadata/_edit_group_ = true
 
 [node name="Zorblug2" type="Label" parent="VBoxContainer2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.784314, 0.145098, 1)
-theme_override_font_sizes/font_size = 50
+theme_override_fonts/font = SubResource("FontVariation_b6ob6")
+theme_override_font_sizes/font_size = 64
 text = "Zorblug "
 horizontal_alignment = 1
 metadata/_edit_group_ = true
 
 [node name="Zorblug" type="Label" parent="VBoxContainer2/Zorblug2"]
 layout_mode = 2
-offset_right = 239.0
-offset_bottom = 31.0
+offset_left = 55.0154
+offset_top = -0.0249467
+offset_right = 299.015
+offset_bottom = 87.9751
 grow_horizontal = 0
 theme_override_colors/font_color = Color(0.537255, 0.117647, 0.168627, 1)
 theme_override_fonts/font = SubResource("FontVariation_wy5jw")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 64
 text = "Zorblug "
 horizontal_alignment = 1
 
 [node name="Fisherman" type="Label" parent="VBoxContainer2"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "the fisherman-man"
+theme_override_font_sizes/font_size = 26
+text = "The fisherman-man"
 horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer2"]

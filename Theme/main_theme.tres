@@ -1,12 +1,6 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://c2iuawhta8x6w"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c2iuawhta8x6w"]
 
-[ext_resource type="FontFile" uid="uid://b8ieuyc5r6p0h" path="res://Assets/Fonts/8-bit Arcade In.ttf" id="1_hsnl2"]
-
-[sub_resource type="FontVariation" id="FontVariation_sa3g0"]
-
-[sub_resource type="FontVariation" id="FontVariation_xr6ib"]
-fallbacks = Array[Font]([SubResource("FontVariation_sa3g0")])
-base_font = ExtResource("1_hsnl2")
+[ext_resource type="FontFile" uid="uid://cfygc0exbl6ot" path="res://Assets/Fonts/SMW Text 2 NC.ttf" id="1_bnc3v"]
 
 [resource]
-default_font = SubResource("FontVariation_xr6ib")
+default_font = ExtResource("1_bnc3v")
