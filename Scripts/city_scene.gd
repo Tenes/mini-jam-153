@@ -28,7 +28,7 @@ func _ready() -> void:
 	rope.linkToHarpoon(harpoon);
 	setupWaveTimer();
 	spoof_particles()
-	for n in 14 :
+	for n in Global.ALL_SOUNDS.size() - 1 :
 		var tempAudioStream : AudioStreamPlayer = AudioStreamPlayer.new();
 		tempAudioStream.stream = Global.ALL_SOUNDS[n];
 		tempAudioStream.volume_db = -80;
@@ -92,17 +92,15 @@ func updateRemainingWaveLength() -> void:
 func spoof_particles():
 	var all_particles = get_tree().get_nodes_in_group("particles")
 	for particle in all_particles:
-		particle.visible = false
 		particle.emitting = true
-	await get_tree().create_timer(1.0).timeout
-	for particle in all_particles:
-		particle.visible = true
-		particle.emitting = false
-	
 	for instantiated_particle in Global.ALL_PARTICLES:
 		var instance = instantiated_particle.instantiate() as GPUParticles2D
 		get_tree().root.add_child(instance)
-		instance.visible = false
 		instance.emitting = true
 		instance.finished.connect(func():instance.queue_free())
+		instance.global_position = $GameScreen/Camera2D.global_position;
+	await get_tree().create_timer(1.0).timeout
+	for particle in all_particles:
+		particle.emitting = false
+	
 

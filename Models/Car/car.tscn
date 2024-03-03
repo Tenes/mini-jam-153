@@ -11,12 +11,10 @@ size = Vector2(24, 13.5)
 script = ExtResource("2_ocd7j")
 startSuccess = 50
 lengthSuccess = 25
+scoreValue = 20
 
 [node name="Shape" parent="Hitbox" index="0"]
 shape = SubResource("RectangleShape2D_2wlwb")
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource("3_pgr1l")
-
-[node name="AudioStreamPlayer2D" parent="." index="2"]
-volume_db = -10.0

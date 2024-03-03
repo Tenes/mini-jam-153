@@ -65,7 +65,12 @@ extends Node
 	preload("res://Assets/Sounds/building_capture_2.mp3"),
 	preload("res://Assets/Sounds/building_capture_3.mp3"),
 	preload("res://Assets/Sounds/car_capture_3.mp3"),
-	preload("res://Assets/Sounds/car_death_1.mp3")
+	preload("res://Assets/Sounds/car_capture_2.mp3"),
+	preload("res://Assets/Sounds/car_death_1.mp3"),
+	preload("res://Assets/Sounds/great_success_1.mp3"),
+	preload("res://Assets/Sounds/success_1.mp3"),
+	preload("res://Assets/Sounds/failure_1.mp3"),
+	preload("res://Assets/Sounds/warning_1.mp3")
 ]
 
 @onready var ALL_PARTICLES = [
