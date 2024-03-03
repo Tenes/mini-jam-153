@@ -68,6 +68,13 @@ extends Node
 	preload("res://Assets/Sounds/car_death_1.mp3")
 ]
 
+@onready var ALL_PARTICLES = [
+	preload("res://Models/Particles/blood_particle_2d.tscn"),
+	preload("res://Models/Particles/brutal_particle_2d.tscn"),
+	preload("res://Models/Particles/capture_particles.tscn"),
+	preload("res://Models/Particles/capture_particles_explosion01.tscn")
+	]
+
 enum BarStatus {
 	DEFAULT = 0,
 	SUCCESS = 1,
