@@ -1,11 +1,12 @@
 extends Control
-@onready var health_bar: ProgressBar = $HealthBar
+@onready var health_bar: TextureRect = $HealthBar
 @onready var score_value: Label = $ScoreContainer/ScoreValue
 @onready var score_multiplier: Label = $MultiplerHolder/ScoreMultiplier
 @onready var animation_player: AnimationPlayer = $MultiplerHolder/AnimationPlayer
 @onready var progress_bar_animation_player: AnimationPlayer = $MarginContainer/ProgressBarAnimationPlayer
 @onready var floating_score: Label = $FloatingTextContainer/FloatingScore
 @onready var fishing_rod = $FishingRod
+@onready var health_animation: AnimationPlayer = $HealthBar/HealthAnimation
 
 var tween: Tween;
 var score = 0;
@@ -23,7 +24,9 @@ func _ready() -> void:
 
 func updateDurability(value: int) -> void:
 	health += value;
-	health_bar.value += value;
+	tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR);
+	tween.tween_property(health_bar, "size", Vector2(health_bar.size.x + (value*32), health_bar.size.y), 0.3).set_ease(Tween.EASE_OUT).from_current();
+	health_animation.play("blink");
 	if health == 0:
 		await get_tree().create_timer(0.25).timeout;
 		Events.player_death.emit(score, bestScoreMultiplier);
@@ -54,9 +57,9 @@ func updateMultiplier(isSuccess: bool) -> void:
 	score_multiplier.text = str(scoreMultiplier);
 
 func shakeProgressBar(status) -> void:
-	var tween = create_tween()
-	tween.tween_property(fishing_rod,"scale",Vector2(1.5,1.5),0.2)
-	tween.tween_property(fishing_rod,"scale",Vector2(1,1),0.2)
+	var ttween = create_tween()
+	ttween.tween_property(fishing_rod,"scale",Vector2(1.5,1.5),0.2)
+	ttween.tween_property(fishing_rod,"scale",Vector2(1,1),0.2)
 	if status == Global.BarStatus.GREAT_SUCCESS:
 		progress_bar_animation_player.play("shake_great_success");
 	elif status == Global.BarStatus.SUCCESS:

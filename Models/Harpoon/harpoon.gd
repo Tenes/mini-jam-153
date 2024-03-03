@@ -42,7 +42,7 @@ func playReelingAnimation() -> void:
 	isReeling = true;
 	sprite_front.speed_scale = 1.5
 	tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR);
-	tween.tween_property(self, "global_position", Vector2(global_position.x - 200, global_position.y), 0.35).from_current();
+	tween.tween_property(self, "global_position", Vector2(global_position.x - 350, global_position.y), 0.35).from_current();
 	tween.tween_callback(func():sprite_front.speed_scale = 0.5)
 
 func returnToOriginalPosition() -> void:

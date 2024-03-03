@@ -65,6 +65,33 @@ _data = {
 "wobbling_2": SubResource("Animation_sks6s")
 }
 
+[sub_resource type="Animation" id="Animation_tfhyr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.139626]
+}
+
 [sub_resource type="Animation" id="Animation_rapw0"]
 resource_name = "default"
 length = 1.5
@@ -92,33 +119,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, -0.139626, 0.221657]
-}
-
-[sub_resource type="Animation" id="Animation_tfhyr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.139626]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_go2p8"]
@@ -155,9 +155,9 @@ text = "Exit
 "
 
 [node name="Extraterrestre02" type="Sprite2D" parent="."]
-position = Vector2(622.164, 60.7015)
-rotation = -0.269255
-scale = Vector2(0.465663, 0.465663)
+position = Vector2(547.987, 162.339)
+rotation = -0.121607
+scale = Vector2(-4.26874, 4.62861)
 texture = ExtResource("3_x7lqp")
 
 [node name="Marker2D" type="Marker2D" parent="Extraterrestre02"]
@@ -174,7 +174,7 @@ libraries = {
 rotation = 0.464904
 scale = Vector2(1.14065, 1.14065)
 stream = ExtResource("4_1x1v6")
-volume_db = -5.0
+volume_db = -0.30636
 autoplay = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
