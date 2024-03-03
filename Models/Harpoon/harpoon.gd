@@ -5,6 +5,7 @@ class_name Harpoon
 @onready var originalPosition: Vector2 = global_position;
 @onready var hitbox: Area2D = $Hitbox
 @onready var sprite_front = $SpriteFront
+@onready var camera_animation_player = $"../Camera2D/AnimationPlayer"
 
 var interactables : Array[Interactable] = [];
 var capturedInteractables : Array[Interactable] = [];
@@ -58,6 +59,7 @@ func _on_scanbox_area_entered(area: Area2D) -> void:
 		if interactable in self.interactables:
 			self.interactables.pop_front();
 		interactable.failedCaptureAnimation();
+		camera_animation_player.play("shake")
 		Events.reset_bar.emit();
 		Events.update_durability.emit(-1);
 		Events.update_multiplier.emit(false);
