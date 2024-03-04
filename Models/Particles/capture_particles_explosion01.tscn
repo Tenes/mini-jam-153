@@ -1,49 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://bga0jmmjnm1f3"]
+[gd_scene format=3 uid="uid://bga0jmmjnm1f3"]
 
-[ext_resource type="PackedScene" uid="uid://bsxu8ugs0g6ob" path="res://Models/Particles/capture_particles.tscn" id="1_fjv72"]
-
-[sub_resource type="Gradient" id="Gradient_7v816"]
-offsets = PackedFloat32Array(0, 0.330882, 0.757353, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0.80727, 0.543797, 1, 0.8366, 0.829042, 0, 1, 0.501961, 0.184314, 0, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_j6eml"]
-gradient = SubResource("Gradient_7v816")
-
-[sub_resource type="Curve" id="Curve_ksf2s"]
-_data = [Vector2(0.0548781, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_5hm50"]
-curve = SubResource("Curve_ksf2s")
-
-[sub_resource type="Curve" id="Curve_0u427"]
-max_value = 4.0
-_data = [Vector2(0, 2.72527), 0.0, 0.0, 0, 0, Vector2(0.481707, 2.85714), 0.0, 0.0, 0, 0, Vector2(0.926829, 2.81319), 0.0, 0.0, 0, 0, Vector2(1, 0.65934), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_4mmd1"]
-curve = SubResource("Curve_0u427")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_73s24"]
-resource_local_to_scene = true
-particle_flag_align_y = true
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(8, 1, 1)
-emission_shape = 1
-emission_sphere_radius = 1.0
-direction = Vector3(0, 0, 0)
-spread = 180.0
-initial_velocity_min = 70.0
-initial_velocity_max = 90.0
-gravity = Vector3(0, 0, 0)
-linear_accel_min = 18.75
-linear_accel_max = 18.75
-scale_over_velocity_curve = SubResource("CurveTexture_4mmd1")
-color_ramp = SubResource("GradientTexture1D_j6eml")
-emission_curve = SubResource("CurveTexture_5hm50")
-
-[node name="CaptureParticles" instance=ExtResource("1_fjv72")]
-process_material = SubResource("ParticleProcessMaterial_73s24")
-lifetime = 0.4
-speed_scale = 1.7
+[node name="CaptureParticles" type="CPUParticles2D"]
+modulate = Color(0.141176, 1, 0, 1)
+emitting = false
+amount = 15
+lifetime = 0.3
+one_shot = true
 explosiveness = 1.0
+local_coords = true
+direction = Vector2(0, -1)
+spread = 80.0
+gravity = Vector2(0, 400)
+initial_velocity_min = 10.0
+initial_velocity_max = 200.0
+orbit_velocity_min = -1.0
+orbit_velocity_max = 1.0

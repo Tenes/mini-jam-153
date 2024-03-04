@@ -1,46 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsxu8ugs0g6ob"]
+[gd_scene format=3 uid="uid://bsxu8ugs0g6ob"]
 
-[sub_resource type="Gradient" id="Gradient_87tai"]
-offsets = PackedFloat32Array(0, 0.757353, 1)
-colors = PackedColorArray(0, 0.80727, 0.543797, 1, 0.8366, 0.829042, 0, 1, 0.501961, 0.184314, 0, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_qy81q"]
-gradient = SubResource("Gradient_87tai")
-
-[sub_resource type="Curve" id="Curve_fjdu2"]
-_data = [Vector2(0.0548781, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_ow0lc"]
-curve = SubResource("Curve_fjdu2")
-
-[sub_resource type="Curve" id="Curve_f7c6w"]
-max_value = 4.0
-_data = [Vector2(0, 2.72527), 0.0, 0.0, 0, 0, Vector2(0.481707, 2.85714), 0.0, 0.0, 0, 0, Vector2(0.926829, 2.81319), 0.0, 0.0, 0, 0, Vector2(1, 0.65934), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_it746"]
-curve = SubResource("Curve_f7c6w")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s1l1x"]
-resource_local_to_scene = true
-particle_flag_align_y = true
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(8, 1, 1)
-emission_shape = 2
-emission_sphere_radius = 1.0
-direction = Vector3(0, 1, 0)
-gravity = Vector3(0, -200, 0)
-linear_accel_min = 18.75
-linear_accel_max = 18.75
-scale_over_velocity_curve = SubResource("CurveTexture_it746")
-color_ramp = SubResource("GradientTexture1D_qy81q")
-emission_curve = SubResource("CurveTexture_ow0lc")
-
-[node name="CaptureParticles" type="GPUParticles2D"]
+[node name="CaptureParticles" type="CPUParticles2D"]
+modulate = Color(0, 1, 0.00784314, 1)
 emitting = false
 amount = 15
-process_material = SubResource("ParticleProcessMaterial_s1l1x")
 lifetime = 0.75
 one_shot = true
 local_coords = true
+direction = Vector2(0, -1)
+spread = 80.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+orbit_velocity_min = 1.0
+orbit_velocity_max = 6.0

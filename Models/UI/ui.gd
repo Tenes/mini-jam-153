@@ -25,7 +25,7 @@ func _ready() -> void:
 func updateDurability(value: int) -> void:
 	health += value;
 	tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR);
-	tween.tween_property(health_bar, "size", Vector2(health_bar.size.x + (value*32), health_bar.size.y), 0.3).set_ease(Tween.EASE_OUT).from_current();
+	tween.tween_property(health_bar, "size", Vector2(health_bar.size.x - ((3 - health)*32), health_bar.size.y), 0.3).set_ease(Tween.EASE_OUT).from_current();
 	health_animation.play("blink");
 	if health == 0:
 		await get_tree().create_timer(0.25).timeout;

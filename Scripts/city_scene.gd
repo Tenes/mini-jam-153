@@ -11,6 +11,8 @@ extends Node
 @onready var hidden_multiplicator: Label = $EndScreen/HBoxContainer/VBoxContainer/HiddenMultiplicator
 @export var waveDownTimer: float = 1;
 @onready var warning_panel = $WarningPanel
+@onready var warning_stream_player: AudioStreamPlayer = $WarningStreamPlayer
+@onready var warning_player: AnimationPlayer = $WarningPanel/WarningPlayer
 
 var interactables : Array[Interactable] = [];
 var difficultyMultiplier:  = 1.0;
@@ -81,8 +83,7 @@ func waveSpawner() -> void:
 
 func show_warning():
 	warning_panel.visible = true
-	await get_tree().create_timer(3.0).timeout;
-	warning_panel.visible = false
+	warning_player.play('blink');
 
 func updateRemainingWaveLength() -> void:
 	currentWaveLength -= 1;
@@ -90,17 +91,21 @@ func updateRemainingWaveLength() -> void:
 		setupWaveTimer();
 
 func spoof_particles():
-	var all_particles = get_tree().get_nodes_in_group("particles")
-	for particle in all_particles:
-		particle.emitting = true
-	for instantiated_particle in Global.ALL_PARTICLES:
-		var instance = instantiated_particle.instantiate() as GPUParticles2D
-		get_tree().root.add_child(instance)
-		instance.emitting = true
-		instance.finished.connect(func():instance.queue_free())
-		instance.global_position = $GameScreen/Camera2D.global_position;
-	await get_tree().create_timer(1.0).timeout
-	for particle in all_particles:
-		particle.emitting = false
+	pass;
+	#var all_particles = get_tree().get_nodes_in_group("particles")
+	#for particle in all_particles:
+		#particle.emitting = true
+	#for instantiated_particle in Global.ALL_PARTICLES:
+		#var instance = instantiated_particle.instantiate() as CPUParticles2D
+		#get_tree().root.add_child(instance)
+		#instance.emitting = true
+		#instance.finished.connect(func():instance.queue_free())
+		#instance.global_position = $GameScreen/Camera2D.global_position;
+	#await get_tree().create_timer(1.0).timeout
+	#for particle in all_particles:
+		#particle.emitting = false
 	
 
+func _on_warning_panel_draw() -> void:
+	warning_stream_player.stream = Global.ALL_SOUNDS[19];
+	warning_stream_player.play();

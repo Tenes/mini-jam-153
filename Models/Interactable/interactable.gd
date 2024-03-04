@@ -95,7 +95,7 @@ func instantiate_particles(particle_list,offset = Vector2.ZERO, pparent = self) 
 	if particle_list == null:
 		return
 	for particle in particle_list:
-		var instance = particle.instantiate() as GPUParticles2D
+		var instance = particle.instantiate() as CPUParticles2D
 		instance.emitting = true
 		instance.finished.connect(func():instance.queue_free())
 		
